@@ -1,0 +1,7 @@
+--- a/mcs/tools/xbuild/targets/Microsoft.Portable.Common.targets	1970-01-01 01:00:00.000000000 +0100
++++ b/mcs/tools/xbuild/targets/Microsoft.Portable.Common.targets	2014-04-01 13:35:15.893092543 +0200
+@@ -0,0 +1,4 @@
++<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++	<Import Project="..\Microsoft.Portable.Core.props" />
++	<Import Project="..\Microsoft.Portable.Core.targets" />
++</Project>

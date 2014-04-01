@@ -13,6 +13,7 @@ BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2u
 BuildRoot: /tmp/buildroot
 Source: mono-%{version}.tar.bz2
 #Patch0: monodoc.patch
+Patch1: bug18690_missing_target.patch
 
 %description
 Mono
@@ -29,6 +30,7 @@ Development files for Mono
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n mono-%{version}
 #%patch0 -p1
+%patch1 -p1
 
 %build
 # Configure and make source
