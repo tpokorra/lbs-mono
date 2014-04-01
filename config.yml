@@ -1,0 +1,3 @@
+lbs:
+  centos:
+    repos: ['http://download.opensuse.org/repositories/home:tpokorra:mono/CentOS_CentOS-6/home:tpokorra:mono.repo']
