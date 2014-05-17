@@ -1,4 +1,4 @@
-%define name mono-opt-nightly
+%define name mono-opt-nightly-master
 %define version 1.0.0
 %define MonoPath /opt/mono
 
