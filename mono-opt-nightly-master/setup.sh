@@ -11,7 +11,7 @@ function buildTarBall {
   make dist
   cd ..
   # adjust the spec file for correct version number
-  sed -i "s/%define version.*/%define version $version/g" mono-opt-nightly.spec
+  sed -i "s/%define version.*/%define version $version/g" mono-opt-nightly*.spec
   mv $branch/mono-$version.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $branch
