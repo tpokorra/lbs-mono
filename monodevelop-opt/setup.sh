@@ -4,9 +4,10 @@ function buildTarBallFromTag {
   tag=$1
   version=$2
   fileversion=$3
-  git clone https://github.com/mono/monodevelop.git $tag
-  cd $tag
-  git branch release $tag
+  $branch=$tag
+  git clone https://github.com/mono/monodevelop.git $branch
+  cd $branch
+  git branch release $branch
   git checkout release
   . /opt/mono/env.sh
   ./configure
@@ -26,7 +27,7 @@ if [ ! -z "`which yum`" ]
 then
   yum install -y git-core automake autoconf libtool tar which gcc-c++ gettext mono-opt bzip2
 else
-  apt-get install -y git-core automake autoconf libtool tar which gcc-c++ gettext mono-opt bzip2
+  apt-get install -y git-core automake autoconf libtool tar build-essential gettext mono-opt bzip2
 fi
 
 buildTarBallFromTag monodevelop-4.2.5.0 4.2.5 4.2.5.0
