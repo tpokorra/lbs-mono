@@ -2,6 +2,6 @@ lbs:
   centos:
     repos: ['http://download.opensuse.org/repositories/home:tpokorra:mono/CentOS_CentOS-6/home:tpokorra:mono.repo']
   debian:
-    7:
+    wheezy:
       repos:
         mono-opt: 'deb http://download.opensuse.org/repositories/home:/tpokorra:/mono/Debian_7.0/ /'
