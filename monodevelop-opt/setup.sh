@@ -4,11 +4,11 @@ function buildTarBallFromTag {
   tag=$1
   version=$2
   fileversion=$3
-  git clone https://github.com/mono/monodevelop.git $branch
-  cd $branch
+  git clone https://github.com/mono/monodevelop.git $tag
+  cd $tag
   git branch release $tag
   . /opt/mono/env.sh
-  ./autogen.sh
+  ./configure
   make dist
   cd ..
   # adjust the spec file for correct version number
