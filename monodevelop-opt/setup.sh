@@ -7,6 +7,7 @@ function buildTarBallFromTag {
   git clone https://github.com/mono/monodevelop.git $tag
   cd $tag
   git branch release $tag
+  git checkout release
   . /opt/mono/env.sh
   ./configure
   make dist
