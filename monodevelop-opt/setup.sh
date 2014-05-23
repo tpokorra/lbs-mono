@@ -28,6 +28,8 @@ then
   yum install -y git-core automake autoconf libtool tar which gcc-c++ gettext mono-opt bzip2
 else
   apt-get install -y --force-yes git-core automake autoconf libtool tar build-essential gettext mono-opt bzip2
+  # TODO should be done via .dsc file, build required:
+  apt-get install -y --force-yes debhelper automake make libgdiplus bash pkg-config shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt autoconf hostname
 fi
 
 buildTarBallFromTag monodevelop-4.2.5.0 4.2.5 4.2.5.0
