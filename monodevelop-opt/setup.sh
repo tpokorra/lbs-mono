@@ -22,7 +22,12 @@ function buildTarBallFromTag {
 }
 
 mkdir ~/sources
-yum install -y git-core automake autoconf libtool tar which gcc-c++ gettext mono-opt bzip2
+if [ ! -z "`which yum`" ] 
+then
+  yum install -y git-core automake autoconf libtool tar which gcc-c++ gettext mono-opt bzip2
+else
+  apt-get install -y git-core automake autoconf libtool tar which gcc-c++ gettext mono-opt bzip2
+fi
 
 buildTarBallFromTag monodevelop-4.2.5.0 4.2.5 4.2.5.0
 
