@@ -1,6 +1,6 @@
 %define name monodevelop-opt
-%define version 4.2.5
-%define fileversion 4.2.5
+%define version 4.2.3
+%define fileversion 4.2.3
 %define MonoPath /opt/mono
 %define MonoDevelopPath /opt/monodevelop
 
