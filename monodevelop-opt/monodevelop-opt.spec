@@ -1,6 +1,6 @@
 %define name monodevelop-opt
-%define version 4.2.3
-%define fileversion 4.2.3
+%define version 4.2.5
+%define fileversion 4.2.5
 %define MonoPath /opt/mono
 %define MonoDevelopPath /opt/monodevelop
 
@@ -15,6 +15,7 @@ BuildRequires: automake autoconf libtool mono-opt >= 3.0 mono-opt-devel libgdipl
 Requires: mono-opt >= 3.0 mono-opt-devel libgdiplus pkgconfig gnome-sharp2-opt gtk-sharp2-opt mono-libgdiplus-opt mono-tools-opt
 BuildRoot: /tmp/buildroot
 Source: monodevelop-%{fileversion}.tar.bz2
+Patch0: scripts.patch
 
 %description
 MonoDevelop
@@ -22,6 +23,7 @@ MonoDevelop
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n monodevelop-%{version}
+%patch0 -p1
 
 %build
 # Configure and make source
