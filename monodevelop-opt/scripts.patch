@@ -11,6 +11,19 @@ diff -uNr monodevelop-4.2.5.orig/Makefile.am monodevelop-4.2.5/Makefile.am
  #capture aclocal flags for autoreconf
  ACLOCAL_AMFLAGS=$(ACLOCAL_FLAGS)
 
+diff -uNr monodevelop-4.2.5.orig/Makefile.in monodevelop-4.2.5/Makefile.in
+--- monodevelop-4.2.5.orig/Makefile.in	2014-05-23 08:44:55.000000000 +0200
++++ monodevelop-4.2.5/Makefile.in	2014-05-24 11:05:46.000000000 +0200
+@@ -319,7 +319,7 @@
+ 	md.targets
+ 
+ SUBDIRS = external . contrib src po man theme-icons build tests
+-MD_CONFIGURE = $(top_srcdir)/../scripts/configure.sh
++MD_CONFIGURE = $(top_srcdir)/scripts/configure.sh
+ 
+ #capture aclocal flags for autoreconf
+ ACLOCAL_AMFLAGS = $(ACLOCAL_FLAGS)
+
 diff -uNr monodevelop-4.2.5.orig/scripts/configure.cs monodevelop-4.2.5/scripts/configure.cs
 --- monodevelop-4.2.5.orig/scripts/configure.cs	1970-01-01 01:00:00.000000000 +0100
 +++ monodevelop-4.2.5/scripts/configure.cs	2014-05-23 21:51:09.000000000 +0200
