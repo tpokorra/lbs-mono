@@ -29,6 +29,7 @@ MonoDevelop
 # Configure and make source
 . %{MonoPath}/env.sh
 ./configure --prefix=%{MonoDevelopPath}
+chmod a+x scripts/*.sh
 make
 
 %install
