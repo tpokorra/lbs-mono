@@ -25,7 +25,7 @@ function buildTarBallFromTag {
 }
 
 mkdir ~/sources
-if [ ! -z "`which yum`" ] 
+if [ -f /etc/redhat-release ] 
 then
   yum install -y git-core automake autoconf libtool tar which gcc-c++ gettext mono-opt bzip2
 else
