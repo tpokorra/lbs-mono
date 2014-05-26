@@ -27,7 +27,9 @@ function buildTarBallFromTag {
 mkdir ~/sources
 if [ -f /etc/redhat-release ] 
 then
-  yum install -y git-core automake autoconf libtool tar which gcc-c++ gettext mono-opt bzip2
+  yum install -y git-core make automake autoconf libtool tar which gcc-c++ gettext bzip2
+  # TODO should get these packages from the spec file, BuildRequires:
+  yum install -y automake autoconf libtool mono-opt mono-opt-devel libgdiplus pkgconfig shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt
 else
   apt-get install -y --force-yes git-core automake autoconf libtool tar build-essential gettext mono-opt bzip2
   # TODO should be done via .dsc file, build required:
