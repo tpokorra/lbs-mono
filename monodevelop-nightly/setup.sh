@@ -7,8 +7,8 @@ function buildTarBallFromMaster {
   branch=master
   #git clone https://github.com/mono/monodevelop.git $branch
   git clone https://github.com/tpokorra/monodevelop $branch
-  git checkout --track FixTarball
   cd $branch
+  git checkout --track FixTarball
   . /opt/mono/env.sh
   ./configure --profile=stable
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
