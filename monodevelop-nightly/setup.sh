@@ -15,7 +15,7 @@ function buildTarBallFromMaster {
   # adjust the spec file for correct version number
   sed -i "s/%define version.*/%define version $version/g" monodevelop-opt*.spec
   sed -i "s/%define fileversion.*/%define fileversion $fileversion/g" monodevelop-opt*.spec
-  cp $branch/tarball/monodevelop-$version.tar.bz2 ~/tarball/monodevelop-nightly.tar.bz2
+  cp $branch/tarballs/monodevelop-$version.tar.bz2 ~/tarball/monodevelop-nightly.tar.bz2
   mv $branch/tarballs/monodevelop-$version.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $branch
