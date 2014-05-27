@@ -1,14 +1,12 @@
 #!/bin/bash
 
-function buildTarBallFromTag {
+function buildTarBallFromMaster {
   tag=$1
   version=$2
   fileversion=$3
-  branch=$tag
+  branch=master
   git clone https://github.com/mono/monodevelop.git $branch
   cd $branch
-  git branch release $branch
-  git checkout release
   . /opt/mono/env.sh
   ./configure --profile=stable
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
@@ -17,11 +15,11 @@ function buildTarBallFromTag {
   # adjust the spec file for correct version number
   sed -i "s/%define version.*/%define version $version/g" monodevelop-opt*.spec
   sed -i "s/%define fileversion.*/%define fileversion $fileversion/g" monodevelop-opt*.spec
-  cp $branch/tarballs/monodevelop-$version.tar.bz2 ~/tarball
+  cp $branch/tarball/monodevelop-$version.tar.bz2 ~/tarball/monodevelop-nightly.tar.bz2
   mv $branch/tarballs/monodevelop-$version.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $branch
-  echo "download at http://lbs.solidcharity.com/tarballs/mono/monodevelop-$version.tar.bz2"
+  echo "download at http://lbs.solidcharity.com/tarballs/mono/monodevelop-nightly.tar.bz2"
 }
 
 mkdir ~/sources
@@ -36,8 +34,8 @@ else
   apt-get install -y --force-yes debhelper automake make libgdiplus bash pkg-config shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt autoconf hostname
 fi
 
-buildTarBallFromTag monodevelop-4.2.5.0 4.2.5 4.2.5.0
-buildTarBallFromTag monodevelop-4.3.4 4.3.4 4.3.4.0
+# build nightly from master
+buildTarBallFromMaster master 5.1 5.1
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
