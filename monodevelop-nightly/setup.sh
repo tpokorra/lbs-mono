@@ -5,7 +5,9 @@ function buildTarBallFromMaster {
   version=$2
   fileversion=$3
   branch=master
-  git clone https://github.com/mono/monodevelop.git $branch
+  #git clone https://github.com/mono/monodevelop.git $branch
+  git clone https://github.com/tpokorra/monodevelop $branch
+  git checkout --track FixTarball
   cd $branch
   . /opt/mono/env.sh
   ./configure --profile=stable
