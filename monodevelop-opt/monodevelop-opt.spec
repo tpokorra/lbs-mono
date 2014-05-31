@@ -1,6 +1,6 @@
 %define name monodevelop-opt
-%define version 4.2.5
-%define fileversion 4.2.5
+%define version 5.0.0
+%define fileversion 5.0.0
 %define MonoPath /opt/mono
 %define MonoDevelopPath /opt/monodevelop
 
@@ -15,7 +15,7 @@ BuildRequires: automake autoconf libtool mono-opt >= 3.0 mono-opt-devel libgdipl
 Requires: mono-opt >= 3.0 mono-opt-devel libgdiplus pkgconfig gnome-sharp2-opt gtk-sharp2-opt mono-libgdiplus-opt mono-tools-opt
 BuildRoot: /tmp/buildroot
 Source: monodevelop-%{fileversion}.tar.bz2
-Patch0: scripts.patch
+#Patch0: scripts.patch
 
 %description
 MonoDevelop
@@ -23,7 +23,7 @@ MonoDevelop
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n monodevelop-%{version}
-%patch0 -p1
+#%patch0 -p1
 
 %build
 # Configure and make source
@@ -65,9 +65,12 @@ chmod a+x %{buildroot}/usr/bin/monodevelop-opt
 /usr/share/icons/hicolor/24x24/apps/monodevelop-opt.png
 /usr/share/icons/hicolor/32x32/apps/monodevelop-opt.png
 /usr/share/icons/hicolor/48x48/apps/monodevelop-opt.png
+/usr/share/icons/hicolor/128x128/apps/monodevelop-opt.png
 /usr/share/icons/hicolor/scalable/apps/monodevelop-opt.svg
 
 %changelog
+* Sat May 31 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- build 5.0.0
 * Fri May 23 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - build 4.2.5
 * Wed Apr 09 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
