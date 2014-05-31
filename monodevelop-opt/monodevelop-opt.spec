@@ -1,6 +1,6 @@
 %define name monodevelop-opt
-%define version 5.0.0
-%define fileversion 5.0.0
+%define version 5.0
+%define fileversion 5.0-0
 %define MonoPath /opt/mono
 %define MonoDevelopPath /opt/monodevelop
 
