@@ -31,6 +31,9 @@ make
 
 %install
 rm -rf %{buildroot}
+# make overwrites the buildinfo (https://github.com/mono/monodevelop/blob/master/main/src/core/MonoDevelop.Core/MonoDevelop.Core.csproj#L577)
+# so we use the buildinfo that comes with the tarball
+cp -f buildinfo build/bin
 make DESTDIR=%{buildroot} install
 find %{buildroot} -iname "*.dll.so" -exec rm '{}' ';'
 mkdir -p %{buildroot}/usr/share/icons
