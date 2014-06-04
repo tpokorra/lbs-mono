@@ -37,7 +37,7 @@ else
 fi
 
 # build nightly from master
-buildTarBallFromMaster master 5.1 5.1
+buildTarBallFromMaster master 5.1.99 5.1
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"

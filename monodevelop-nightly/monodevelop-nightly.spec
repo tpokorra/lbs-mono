@@ -1,6 +1,6 @@
 %define name monodevelop-nightly
-%define version 4.2.5
-%define fileversion 4.2.5
+%define version 0.1
+%define fileversion 0.1
 %define MonoPath /opt/mono
 %define MonoDevelopPath /opt/monodevelop
 
@@ -31,10 +31,10 @@ make
 
 %install
 rm -rf %{buildroot}
-# make overwrites the buildinfo (https://github.com/mono/monodevelop/blob/master/main/src/core/MonoDevelop.Core/MonoDevelop.Core.csproj#L577)
-# so we use the buildinfo that comes with the tarball
-cp -f buildinfo build/bin
 make DESTDIR=%{buildroot} install
+# make && make install overwrites the buildinfo (https://github.com/mono/monodevelop/blob/master/main/src/core/MonoDevelop.Core/MonoDevelop.Core.csproj#L577)
+# so we use the buildinfo that comes with the tarball
+cp -f buildinfo %{buildroot}/%{MonoDevelopPath}/lib/monodevelop/bin/
 find %{buildroot} -iname "*.dll.so" -exec rm '{}' ';'
 mkdir -p %{buildroot}/usr/share/icons
 mkdir -p %{buildroot}/usr/share/applications
