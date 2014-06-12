@@ -21,7 +21,7 @@ function buildTarBallFromTag {
   mv $branch/tarballs/monodevelop-$version.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $branch
-  echo "download at http://lbs.solidcharity.com/tarballs/mono/monodevelop-$version.tar.bz2"
+  echo "download at http://lbs.solidcharity.com/tarballs/tpokorra/mono/monodevelop-$version.tar.bz2"
 }
 
 mkdir ~/sources
@@ -36,8 +36,9 @@ else
   apt-get install -y --force-yes debhelper automake make libgdiplus bash pkg-config shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt autoconf hostname
 fi
 
-buildTarBallFromTag monodevelop-4.2.5.0 4.2.5 4.2.5.0
-buildTarBallFromTag monodevelop-4.3.4 4.3.4 4.3.4.0
+#buildTarBallFromTag monodevelop-4.2.5.0 4.2.5 4.2.5.0
+#buildTarBallFromTag monodevelop-4.3.4 4.3.4 4.3.4.0
+buildTarBallFromTag monodevelop-5.0.1.3 5.0.1 5.0.1.0
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
