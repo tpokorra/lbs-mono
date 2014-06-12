@@ -21,7 +21,7 @@ MonoDevelop
 
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
-%setup -q -n monodevelop-%{version}
+%setup -q -n monodevelop-%{fileversion}
 
 %build
 # Configure and make source

@@ -2,8 +2,6 @@
 
 function buildTarBallFromMaster {
   tag=$1
-  version=$2
-  fileversion=$3
   branch=master
   git clone https://github.com/mono/monodevelop.git $branch
   #git clone https://github.com/tpokorra/monodevelop $branch
@@ -13,6 +11,9 @@ function buildTarBallFromMaster {
   ./configure --profile=stable
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
   make dist
+  line=`cat version.config | grep "^Version"`
+  fileversion=${line:6}
+  version="$fileversion.99"
   cd ..
   # adjust the spec file for correct version number
   sed -i "s/%define version.*/%define version $version/g" monodevelop*.spec
@@ -21,7 +22,7 @@ function buildTarBallFromMaster {
   mv $branch/tarballs/monodevelop-*.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $branch
-  echo "download at http://lbs.solidcharity.com/tarballs/mono/monodevelop-nightly.tar.bz2"
+  echo "download at http://lbs.solidcharity.com/tarballs/tpokorra/mono/monodevelop-nightly.tar.bz2"
 }
 
 mkdir ~/sources
@@ -37,7 +38,7 @@ else
 fi
 
 # build nightly from master
-buildTarBallFromMaster master 5.2.99 5.2
+buildTarBallFromMaster master
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
