@@ -12,7 +12,7 @@ function buildTarBallFromMaster {
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
   make dist
   line=`cat version.config | grep "^Version"`
-  fileversion=${line:6}
+  fileversion=${line:8}
   version="$fileversion.99"
   cd ..
   # adjust the spec file for correct version number
