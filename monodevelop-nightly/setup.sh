@@ -17,8 +17,8 @@ function buildTarBallFromMaster {
   # adjust the spec file for correct version number
   sed -i "s/%define version.*/%define version $version/g" monodevelop*.spec
   sed -i "s/%define fileversion.*/%define fileversion $fileversion/g" monodevelop*.spec
-  cp $branch/tarballs/monodevelop-$version.tar.bz2 ~/tarball/monodevelop-nightly.tar.bz2
-  mv $branch/tarballs/monodevelop-$version.tar.bz2 ~/sources
+  cp $branch/tarballs/monodevelop-*.tar.bz2 ~/tarball/monodevelop-nightly.tar.bz2
+  mv $branch/tarballs/monodevelop-*.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $branch
   echo "download at http://lbs.solidcharity.com/tarballs/mono/monodevelop-nightly.tar.bz2"
@@ -37,7 +37,7 @@ else
 fi
 
 # build nightly from master
-buildTarBallFromMaster master 5.1.99 5.1
+buildTarBallFromMaster master 5.2.99 5.2
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
