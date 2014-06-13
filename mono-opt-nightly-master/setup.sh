@@ -37,6 +37,7 @@ function buildTarBall {
   fi
   echo "DONE with building the tarball for " $branch
   echo "download at http://lbs.solidcharity.com/tarballs/tpokorra/mono/mono-$branch-nightly.tar.bz2"
+  exit 0
 }
 
 mkdir ~/sources
@@ -49,6 +50,8 @@ else
 fi
 
 buildTarBall "https://github.com/mono/mono.git" master
-
+result=$?
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
+
+exit $result
