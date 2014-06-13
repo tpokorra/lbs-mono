@@ -28,7 +28,7 @@ function buildTarBall {
   sed -i "s/%define tarballversion.*/%define tarballversion $tarballversion/g" mono-opt-nightly*.spec
 
   cp work/mono-*.tar.bz2 ~/tarball/mono-$branch-nightly.tar.bz2
-  mv work/mono-*.tar.bz2 ~/sources/mono-$branch-nightly.tar.bz2
+  mv work/mono-*.tar.bz2 ~/sources/mono-nightly.tar.bz2
   if [[ ! -f ~/tarball/mono-$branch-nightly.tar.bz2 ]]
   then
     echo "LBSERROR: no tarball was created"
@@ -50,7 +50,8 @@ else
   echo "LBSERROR: need to install required packages for building tarball, see CentOS"
 fi
 
-buildTarBall "https://github.com/mono/mono.git" master
+branch=$1
+buildTarBall "https://github.com/mono/mono.git" $branch
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"

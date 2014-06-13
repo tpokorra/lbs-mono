@@ -1,5 +1,6 @@
-%define name mono-opt-nightly-branch
+%define name mono-opt-nightly
 %define version 1.0.0
+%define tarballversion 1.0.0
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -11,7 +12,7 @@ License: GPL
 Group: Development/Languages/Mono
 BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus
 BuildRoot: /tmp/buildroot
-Source: mono-branch-nightly.tar.bz2
+Source: mono-nightly.tar.bz2
 
 %description
 Mono
@@ -26,7 +27,7 @@ Development files for Mono
 
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
-%setup -q -n mono-%{version}
+%setup -q -n mono-%{tarballversion}
 
 %build
 # Configure and make source
