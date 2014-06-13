@@ -27,7 +27,7 @@ function buildTarBall {
   sed -i "s/%define version.*/%define version $version/g" mono-opt-nightly*.spec
   sed -i "s/%define tarballversion.*/%define tarballversion $tarballversion/g" mono-opt-nightly*.spec
 
-  cp work/tarballs/monodevelop-*.tar.bz2 ~/tarball/mono-$branch-nightly.tar.bz2
+  cp work/mono-*.tar.bz2 ~/tarball/mono-$branch-nightly.tar.bz2
   mv work/mono-*.tar.bz2 ~/sources/mono-$branch-nightly.tar.bz2
   if [[ ! -f ~/tarball/mono-$branch-nightly.tar.bz2 ]]
   then
