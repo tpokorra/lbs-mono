@@ -39,6 +39,13 @@ function buildTarBall {
 
 mkdir ~/sources
 
+if [ -f /etc/redhat-release ] 
+then
+  yum install -y git-core
+else
+  apt-get install -y --force-yes git-core
+fi
+
 buildTarBall "https://github.com/mono/mono.git" master
 
 # tell the LBS that the calling python script can continue
