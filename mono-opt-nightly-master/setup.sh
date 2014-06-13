@@ -32,6 +32,8 @@ function buildTarBall {
   if [[ ! -f ~/tarball/mono-$branch-nightly.tar.bz2 ]]
   then
     echo "LBSERROR: no tarball was created"
+    echo "LBSScriptFinished"
+    exit 1
   fi
   echo "DONE with building the tarball for " $branch
   echo "download at http://lbs.solidcharity.com/tarballs/tpokorra/mono/mono-$branch-nightly.tar.bz2"
