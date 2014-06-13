@@ -1,5 +1,6 @@
 %define name mono-opt-nightly-master
 %define version 1.0.0
+%define tarballversion 1.0.0
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -26,7 +27,7 @@ Development files for Mono
 
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
-%setup -q -n mono-%{version}
+%setup -q -n mono-%{tarballversion}
 
 %build
 # Configure and make source
