@@ -1,6 +1,9 @@
 #!/bin/bash
 
 function buildTarBall {
+    echo "LBSERROR: no tarball was created"
+    echo "LBSScriptFinished"
+    exit 1
   giturl=$1
   branch=$2
   git clone $giturl work
