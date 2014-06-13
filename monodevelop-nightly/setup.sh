@@ -45,10 +45,10 @@ else
 fi
 
 # build nightly from master
-#buildTarBall "https://github.com/mono/monodevelop.git" master
+buildTarBall "https://github.com/mono/monodevelop.git" master
 
 # build testbuild from my branch
-buildTarBall "https://github.com/tpokorra/monodevelop.git" testtimo
+#buildTarBall "https://github.com/tpokorra/monodevelop.git" testtimo
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
