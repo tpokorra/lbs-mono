@@ -1,8 +1,6 @@
 #!/bin/bash
 
 function buildTarBall {
-    echo "LBSERROR: no tarball was created"
-    exit 1
   giturl=$1
   branch=$2
   git clone $giturl work
@@ -42,11 +40,14 @@ function buildTarBall {
 
 mkdir ~/sources
 
+# install the packages that are needed to build the tarball.
+# those are different packages than in BuildRequires in the spec file
 if [ -f /etc/redhat-release ] 
 then
-  yum install -y git-core
+  yum install -y git-core automake autoconf libtool tar which gcc-c++ gettext mono-opt bzip2
 else
   apt-get install -y --force-yes git-core
+  echo "LBSERROR: need to install required packages for building tarball, see CentOS"
 fi
 
 buildTarBall "https://github.com/mono/mono.git" master
