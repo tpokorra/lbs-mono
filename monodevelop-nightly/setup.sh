@@ -21,9 +21,9 @@ function buildTarBall {
   sed -i "s/%define version.*/%define version $version/g" monodevelop*.spec
   sed -i "s/%define fileversion.*/%define fileversion $fileversion/g" monodevelop*.spec
   
-  cp work/tarballs/monodevelop-*.tar.bz2 ~/tarball/monodevelop-nightly.tar.bz2
+  cp work/tarballs/monodevelop-*.tar.bz2 ~/tarball/monodevelop-$branch-nightly.tar.bz2
   mv work/tarballs/monodevelop-*.tar.bz2 ~/sources
-  if [[ ! -f ~/tarball/monodevelop-nightly.tar.bz2 ]]
+  if [[ ! -f ~/tarball/monodevelop-$branch-nightly.tar.bz2 ]]
   then
     echo "LBSERROR: no tarball was created"
   fi
@@ -45,7 +45,8 @@ else
 fi
 
 # build nightly from master
-buildTarBall "https://github.com/mono/monodevelop.git" master
+branch=$1
+buildTarBall "https://github.com/mono/monodevelop.git" $branch
 
 # build testbuild from my branch
 #buildTarBall "https://github.com/tpokorra/monodevelop.git" testtimo
