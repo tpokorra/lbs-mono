@@ -2,7 +2,6 @@
 
 function buildTarBall {
     echo "LBSERROR: no tarball was created"
-    echo "LBSScriptFinished"
     exit 1
   giturl=$1
   branch=$2
@@ -35,12 +34,10 @@ function buildTarBall {
   if [[ ! -f ~/tarball/mono-$branch-nightly.tar.bz2 ]]
   then
     echo "LBSERROR: no tarball was created"
-    echo "LBSScriptFinished"
-    exit 1
+    return
   fi
   echo "DONE with building the tarball for " $branch
   echo "download at http://lbs.solidcharity.com/tarballs/tpokorra/mono/mono-$branch-nightly.tar.bz2"
-  exit 0
 }
 
 mkdir ~/sources
@@ -53,8 +50,7 @@ else
 fi
 
 buildTarBall "https://github.com/mono/mono.git" master
-result=$?
+
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
 
-exit $result
