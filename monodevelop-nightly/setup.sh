@@ -45,6 +45,7 @@ then
   # for CentOS6, we need a newer version of git, see issue https://github.com/tpokorra/lbs-mono/issues/5
   if [ "`cat /etc/redhat-release | grep 'CentOS release 6'`" ]
   then
+    rpm -Uhv http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/epel-release-6-5.noarch.rpm
     rpm -Uhv http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-11.ius.centos6.noarch.rpm
     gitpackage=git18
   fi
