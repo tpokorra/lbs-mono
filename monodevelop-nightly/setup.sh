@@ -21,12 +21,12 @@ function buildTarBall {
   sed -i "s/%define version.*/%define version $version/g" monodevelop*.spec
   sed -i "s/%define fileversion.*/%define fileversion $fileversion/g" monodevelop*.spec
   
-  cp work/tarballs/monodevelop-*.tar.bz2 ~/tarball/monodevelop-$branch-nightly.tar.bz2
-  mv work/tarballs/monodevelop-*.tar.bz2 ~/sources
-  if [[ ! -f ~/tarball/monodevelop-$branch-nightly.tar.bz2 ]]
+  if [[ ! `ls work/tarballs/monodevelop-*.tar.bz2` ]]
   then
     echo "LBSERROR: no tarball was created"
   fi
+  cp work/tarballs/monodevelop-*.tar.bz2 ~/tarball/monodevelop-$branch-nightly.tar.bz2
+  mv work/tarballs/monodevelop-*.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $giturl $branch
   echo "download at http://lbs.solidcharity.com/tarballs/tpokorra/mono/monodevelop-nightly.tar.bz2"
