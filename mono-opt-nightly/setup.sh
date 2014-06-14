@@ -12,6 +12,11 @@ function buildTarBall {
   . /opt/mono/env.sh
   ./autogen.sh
   make dist
+  status=$?
+  if [ $status -ne 0 ]
+  then
+    echo "LBSERROR: error during make dist"
+  fi
 
   # get the version number from the generated tarball, eg. mono-3.6.1.tar.bz2
   filename=`ls mono-*.tar.bz2`

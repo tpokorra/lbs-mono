@@ -13,6 +13,12 @@ function buildTarBall {
   ./configure --profile=stable
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s, need newer autoconf
   make dist
+  status=$?
+  if [ $status -ne 0 ]
+  then
+    echo "LBSERROR: error during make dist"
+  fi
+
   line=`cat version.config | grep "^Version"`
   fileversion=${line:8}
   version="$fileversion.99"
