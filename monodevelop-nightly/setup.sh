@@ -41,13 +41,16 @@ function buildTarBall {
 mkdir ~/sources
 if [ -f /etc/redhat-release ] 
 then
-  yum install -y git-core make automake autoconf libtool tar which gcc-c++ gettext bzip2
-  # TODO should get these packages from the spec file, BuildRequires:
-  yum install -y automake autoconf libtool mono-opt mono-opt-devel libgdiplus pkgconfig shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt
+  $gitpackage="git-core"
+  # for CentOS6, we need a newer version of git, see issue https://github.com/tpokorra/lbs-mono/issues/5
+  if [ "`cat /etc/redhat-release | grep 'CentOS release 6'`" ]
+  then
+    rpm -Uhv http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-11.ius.centos6.noarch.rpm
+    gitpackage=git18
+  fi
+  yum install -y $gitpackage make automake autoconf libtool tar which gcc-c++ gettext bzip2
 else
   apt-get install -y --force-yes git-core automake autoconf libtool tar build-essential gettext mono-opt bzip2
-  # TODO should be done via .dsc file, build required:
-  apt-get install -y --force-yes debhelper automake make libgdiplus bash pkg-config shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt autoconf hostname
 fi
 
 # build nightly from master
