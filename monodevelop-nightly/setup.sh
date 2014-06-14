@@ -41,7 +41,7 @@ function buildTarBall {
 mkdir ~/sources
 if [ -f /etc/redhat-release ] 
 then
-  $gitpackage="git-core"
+  gitpackage=git-core
   # for CentOS6, we need a newer version of git, see issue https://github.com/tpokorra/lbs-mono/issues/5
   if [ "`cat /etc/redhat-release | grep 'CentOS release 6'`" ]
   then
