@@ -13,7 +13,7 @@ Group: Development
 Requires: pkgconfig mono-openpetra mono-openpetra-devel libgdiplus mono-openpetra-libgdiplus liberation-mono-fonts
 BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch mono-opt mono-opt-devel pkgconfig
 BuildRoot: /tmp/buildroot
-Source: nant-%{NantGitTimestamp}.tar.gz
+Source: %{NantGitTimestamp}.tar.gz
 
 %description
 some development tools for Mono
