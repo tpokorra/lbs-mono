@@ -12,6 +12,7 @@ License: GPL
 Group: Development/Languages/Mono
 BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus
 BuildRoot: /tmp/buildroot
+Provides: mono-opt
 Source: mono-nightly.tar.bz2
 
 %description
