@@ -10,7 +10,7 @@ Release: %{release}
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development
-Requires: pkgconfig mono-opt mono-opt-devel libgdiplus mono-opt-libgdiplus liberation-mono-fonts
+Requires: pkgconfig mono-opt mono-opt-devel libgdiplus mono-libgdiplus-opt liberation-mono-fonts
 BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch mono-opt mono-opt-devel pkgconfig
 BuildRoot: /tmp/buildroot
 Source: %{NantGitTimestamp}.tar.gz
