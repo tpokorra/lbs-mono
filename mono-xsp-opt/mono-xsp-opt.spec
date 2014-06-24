@@ -1,7 +1,7 @@
 %define name mono-xsp-opt
 %define version 3.0.11
 %define MonoPath /opt/mono
-%define XSPGitTimestamp 1368532016
+%define XSPGitReference 4587438369691b9b3e8415e1f113aa98b57d1fde
 
 Summary: XSP built for Mono
 Name: %{name}
@@ -13,14 +13,14 @@ Group: Productivity/Networking/Web/Utilities
 Requires: pkgconfig mono-opt mono-opt-devel
 BuildRequires: gcc libtool bison gettext make bzip2 autoconf automake libtool gcc-c++ patch mono-opt mono-opt-devel pkgconfig sqlite
 BuildRoot: /tmp/buildroot
-Source: xsp-%{XSPGitTimestamp}.tar.gz
+Source: xsp-%{XSPGitReference}.tar.gz
 
 %description
 XSP built for Mono
 
 %prep
 [ -d $RPM_BUILD_ROOT ] && [ "/" != "$RPM_BUILD_ROOT" ] && rm -rf $RPM_BUILD_ROOT
-%setup -q -n xsp-%{XSPGitTimestamp}
+%setup -q -n xsp-%{XSPGitReference}
 
 %build
 # Configure and make source
