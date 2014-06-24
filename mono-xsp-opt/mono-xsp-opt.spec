@@ -13,7 +13,7 @@ Group: Productivity/Networking/Web/Utilities
 Requires: pkgconfig mono-opt mono-opt-devel
 BuildRequires: gcc libtool bison gettext make bzip2 autoconf automake libtool gcc-c++ patch mono-opt mono-opt-devel pkgconfig sqlite
 BuildRoot: /tmp/buildroot
-Source: xsp-%{XSPGitReference}.tar.gz
+Source: %{XSPGitReference}.tar.gz
 
 %description
 XSP built for Mono
