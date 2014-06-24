@@ -1,0 +1,4 @@
+lbs:
+  source:
+    # release 3.0.11
+    download: ["https://github.com/mono/xsp/archive/4587438369691b9b3e8415e1f113aa98b57d1fde.tar.gz"]
