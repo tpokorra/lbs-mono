@@ -11,7 +11,7 @@ Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Productivity/Networking/Web/Utilities
 Requires: pkgconfig mono-opt mono-opt-devel
-BuildRequires: gcc libtool bison gettext make bzip2 autoconf automake libtool gcc-c++ patch mono-opt mono-opt-devel pkgconfig sqlite
+BuildRequires: gcc libtool bison gettext make bzip2 autoconf automake libtool gcc-c++ patch mono-opt mono-opt-devel pkgconfig sqlite which
 BuildRoot: /tmp/buildroot
 Source: %{XSPGitReference}.tar.gz
 
