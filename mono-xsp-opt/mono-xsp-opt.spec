@@ -1,7 +1,7 @@
 %define name mono-xsp-opt
-%define version 3.0.11
+%define version 3.0.99
 %define MonoPath /opt/mono
-%define XSPGitReference 4587438369691b9b3e8415e1f113aa98b57d1fde
+%define XSPGitReference 8a31bc625727594d42f94173768bee5cf8afd0a4
 
 Summary: XSP built for Mono
 Name: %{name}
@@ -43,5 +43,7 @@ make DESTDIR=%{buildroot} install
 %post
 
 %changelog
+* Fri Jun 27 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- newer version from Github
 * Fri Aug 02 2013 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - First build
