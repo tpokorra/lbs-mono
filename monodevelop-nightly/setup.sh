@@ -15,9 +15,9 @@ function buildTarBall {
   # install the certificates for nuget, see http://stackoverflow.com/questions/15181888/nuget-on-linux-error-getting-response-stream
   # this is needed for Microsoft AspNet
   mozroots --import --machine --sync
-  certmgr -ssl -m https://go.microsoft.com
-  certmgr -ssl -m https://nugetgallery.blob.core.windows.net
-  certmgr -ssl -m https://nuget.org
+  yes | certmgr -ssl -m https://go.microsoft.com
+  yes | certmgr -ssl -m https://nugetgallery.blob.core.windows.net
+  yes | certmgr -ssl -m https://nuget.org
 
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s, need newer autoconf
   make dist
