@@ -15,6 +15,16 @@ index 613a3a4..e773afb 100644
 	@cp version.config tarballs/monodevelop-$(PACKAGE_VERSION)
 	@cd main && make buildinfo
 	@cp main/build/bin/buildinfo tarballs/monodevelop-$(PACKAGE_VERSION)/
+diff --git a/main/src/addins/AspNet/Makefile.am b/main/src/addins/AspNet/Makefile.am
+index b8a0678..2dc30ca 100644
+--- a/main/src/addins/AspNet/Makefile.am
++++ b/main/src/addins/AspNet/Makefile.am
+@@ -1,4 +1,4 @@
+ include $(top_srcdir)/xbuild.include
+ EXTRA_DIST += \
+ 		$(wildcard lib/*) \
+-		$(wildcard Templates/Common/*.cshtml)
++		$(wildcard Templates/MvcCommon/*.cshtml)
 diff --git a/main/src/addins/AspNet/MonoDevelop.AspNet.csproj b/main/src/addins/AspNet/MonoDevelop.AspNet.csp
 index 26e3e80..f5c4f03 100644
 --- a/main/src/addins/AspNet/MonoDevelop.AspNet.csproj
