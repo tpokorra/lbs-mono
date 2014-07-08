@@ -21,12 +21,7 @@ function buildTarBall {
   fi
 
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s, need newer autoconf
-  make dist
-  status=$?
-  if [ $status -ne 0 ]
-  then
-    echo "LBSERROR: error during make dist"
-  fi
+  make dist || exit 1
 
   line=`cat version.config | grep "^Version"`
   fileversion=${line:8}
@@ -39,6 +34,7 @@ function buildTarBall {
   if [[ ! `ls work/tarballs/monodevelop-*.tar.bz2` ]]
   then
     echo "LBSERROR: no tarball was created"
+    exit 1
   fi
   cp work/tarballs/monodevelop-*.tar.bz2 ~/tarball/monodevelop-$branch-nightly.tar.bz2
   mv work/tarballs/monodevelop-*.tar.bz2 ~/sources

@@ -10,7 +10,7 @@ index 613a3a4..e773afb 100644
 +	@yes | certmgr -ssl -m https://go.microsoft.com
 +	@yes | certmgr -ssl -m https://nugetgallery.blob.core.windows.net
 +	@yes | certmgr -ssl -m https://nuget.org
-+	@cd main/src/addins/AspNet && mono ../../../external/nuget-binary/NuGet.exe restore -SolutionDirectory ../.
++	@cd main/src/addins/AspNet && mono ../../../external/nuget-binary/NuGet.exe restore -SolutionDirectory ../../..
 +	@cp -R main/packages tarballs/monodevelop-$(PACKAGE_VERSION)
 	@cp version.config tarballs/monodevelop-$(PACKAGE_VERSION)
 	@cd main && make buildinfo
