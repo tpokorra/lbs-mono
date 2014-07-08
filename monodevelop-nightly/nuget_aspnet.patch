@@ -3,7 +3,7 @@ index 613a3a4..e773afb 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -77,6 +77,12 @@ dist: update_submodules remove-stale-tarballs dist-recursive
-	@rm -rf tarballs/external       
+	@rm -rf tarballs/external	
 	@echo Decompressing monodevelop-$(PACKAGE_VERSION).tar.bz2
 	@cd tarballs && tar xvjf monodevelop-$(PACKAGE_VERSION).tar.bz2
 +	mozroots --import --machine --sync
