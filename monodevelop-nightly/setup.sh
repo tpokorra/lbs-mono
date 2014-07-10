@@ -40,7 +40,7 @@ function buildTarBall {
   mv work/tarballs/monodevelop-*.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $giturl $branch
-  echo "download at http://lbs.solidcharity.com/tarballs/tpokorra/mono/monodevelop-nightly.tar.bz2"
+  echo "download at http://lbs.solidcharity.com/tarballs/tpokorra/mono/monodevelop-$branch-nightly.tar.bz2"
 }
 
 mkdir ~/sources
