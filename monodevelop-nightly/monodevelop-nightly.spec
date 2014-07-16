@@ -7,7 +7,7 @@
 Summary: MonoDevelop
 Name: %{name}
 Version: %{version}
-Release: 0
+Release: %{release}
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: none
