@@ -9,6 +9,7 @@ function buildTarBall {
   then
     git checkout --track remotes/origin/$branch
   fi
+  echo "current revision of git $giturl $branch: " `git rev-parse HEAD`
   . /opt/mono/env.sh
   ./configure --profile=stable
 
