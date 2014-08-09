@@ -29,12 +29,11 @@ diff --git a/main/src/addins/AspNet/MonoDevelop.AspNet.csproj b/main/src/addins/
 index 26e3e80..f5c4f03 100644
 --- a/main/src/addins/AspNet/MonoDevelop.AspNet.csproj
 +++ b/main/src/addins/AspNet/MonoDevelop.AspNet.csproj
-@@ -494,6 +494,6 @@
+@@ -493,6 +493,6 @@
+       <NuGet>$(SolutionDir)\external\nuget-binary\NuGet.exe</NuGet>
        <NuGet Condition="$(OS)=='Unix'">mono $(NuGet)</NuGet>
-       <SlnDir>..\..\..</SlnDir>
      </PropertyGroup>
--    <Exec Command="$(NuGet) restore -SolutionDirectory $(SlnDir)" />
-+    <Exec Command="$(NuGet) restore -SolutionDirectory $(SlnDir)" IgnoreExitCode="True"/>
+-    <Exec Command="$(NuGet) restore -SolutionDirectory $(SolutionDir)" />
++    <Exec Command="$(NuGet) restore -SolutionDirectory $(SolutionDir)" IgnoreExitCode="True"/>
    </Target>
  </Project>
-
