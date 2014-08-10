@@ -17,8 +17,13 @@ function buildTarBall {
   # this is needed for Microsoft AspNet
   # only apply for Monodevelop >= 5.2
   if [ -f main/src/addins/AspNet/MonoDevelop.AspNet.csproj ]
-  then 
-    patch -p1 < ../nuget_aspnet.patch || exit 1
+  then
+    if [[ "$branch" == "monodevelop-5.2-branch" || "$branch" == "monodevelop-5.3-branch" ]]
+    then
+      patch -p1 < ../nuget_aspnet_5.2.patch || exit 1
+    else
+      patch -p1 < ../nuget_aspnet.patch || exit 1
+    fi
   fi
 
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s, need newer autoconf

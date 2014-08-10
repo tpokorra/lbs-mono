@@ -1,0 +1,40 @@
+diff --git a/Makefile b/Makefile
+index 613a3a4..e773afb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -77,6 +77,12 @@ dist: update_submodules remove-stale-tarballs dist-recursive
+	@rm -rf tarballs/external	
+	@echo Decompressing monodevelop-$(PACKAGE_VERSION).tar.bz2
+	@cd tarballs && tar xvjf monodevelop-$(PACKAGE_VERSION).tar.bz2
++	mozroots --import --machine --sync
++	yes | certmgr -ssl -m https://go.microsoft.com
++	yes | certmgr -ssl -m https://nugetgallery.blob.core.windows.net
++	yes | certmgr -ssl -m https://nuget.org
++	cd main/src/addins/AspNet && mono ../../../external/nuget-binary/NuGet.exe restore -SolutionDirectory ../../.. -verbosity detailed
++	cp -R main/packages tarballs/monodevelop-$(PACKAGE_VERSION)
+	@cp version.config tarballs/monodevelop-$(PACKAGE_VERSION)
+	@cd main && make buildinfo
+	@cp main/build/bin/buildinfo tarballs/monodevelop-$(PACKAGE_VERSION)/
+diff --git a/main/src/addins/AspNet/Makefile.am b/main/src/addins/AspNet/Makefile.am
+index b8a0678..2dc30ca 100644
+--- a/main/src/addins/AspNet/Makefile.am
++++ b/main/src/addins/AspNet/Makefile.am
+@@ -1,4 +1,4 @@
+ include $(top_srcdir)/xbuild.include
+ EXTRA_DIST += \
+ 		$(wildcard lib/*) \
+-		$(wildcard Templates/Common/*.cshtml)
++		$(wildcard Templates/MvcCommon/*.cshtml)
+diff --git a/main/src/addins/AspNet/MonoDevelop.AspNet.csproj b/main/src/addins/AspNet/MonoDevelop.AspNet.csp
+index 26e3e80..f5c4f03 100644
+--- a/main/src/addins/AspNet/MonoDevelop.AspNet.csproj
++++ b/main/src/addins/AspNet/MonoDevelop.AspNet.csproj
+@@ -494,6 +494,6 @@
+       <NuGet Condition="$(OS)=='Unix'">mono $(NuGet)</NuGet>
+       <SlnDir>..\..\..</SlnDir>
+     </PropertyGroup>
+-    <Exec Command="$(NuGet) restore -SolutionDirectory $(SlnDir)" />
++    <Exec Command="$(NuGet) restore -SolutionDirectory $(SlnDir)" IgnoreExitCode="True"/>
+   </Target>
+ </Project>
+
