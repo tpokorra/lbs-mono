@@ -1,0 +1,12 @@
+--- a/main/src/addins/NUnit/NUnitRunner/NUnitRunner.csproj	2014-08-10 22:11:46.000000000 +0200
++++ b/main/src/addins/NUnit/NUnitRunner/NUnitRunner.csproj.new	2014-08-10 22:12:29.000000000 +0200
+@@ -58,6 +58,6 @@
+       <NuGet>$(SolutionDir)\external\nuget-binary\NuGet.exe</NuGet>
+       <NuGet Condition="$(OS)=='Unix'">mono $(NuGet)</NuGet>
+     </PropertyGroup>
+-    <Exec Command="$(NuGet) restore -SolutionDirectory $(SolutionDir)" />
++    <Exec Command="$(NuGet) restore -SolutionDirectory $(SolutionDir)" IgnoreExitCode="True" />
+   </Target>
+-</Project>
+\ No newline at end of file
++</Project>

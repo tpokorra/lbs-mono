@@ -23,6 +23,7 @@ function buildTarBall {
       patch -p1 < ../nuget_aspnet_5.2.patch || exit 1
     else
       patch -p1 < ../nuget_aspnet.patch || exit 1
+      patch -p1 < ../NUnitRunner.patch || exit 1
     fi
   fi
 
