@@ -1,5 +1,5 @@
 %define name mono-opt
-%define version 3.4.0
+%define version 3.6.0
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -13,7 +13,7 @@ BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2u
 BuildRoot: /tmp/buildroot
 Source: mono-%{version}.tar.bz2
 #Patch0: monodoc.patch
-Patch1: bug18690_missing_target.patch
+#Patch1: bug18690_missing_target.patch
 
 %description
 Mono
@@ -30,7 +30,7 @@ Development files for Mono
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n mono-%{version}
 #%patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 
 %build
 # Configure and make source
@@ -84,6 +84,8 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 %{MonoPath}/lib/*.a
 
 %changelog
+* Wed Aug 13 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 3.6.0
 * Tue Apr 01 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 3.4.0
 * Thu Feb 20 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
