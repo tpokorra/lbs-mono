@@ -22,7 +22,7 @@ Mono LLVM
 
 %build
 # Configure and make source
-./configure --prefix=%{MonoPath}
+./configure --prefix=%{MonoPath} --enable-optimized --enable-targets=x86_64
 make
 
 %install
