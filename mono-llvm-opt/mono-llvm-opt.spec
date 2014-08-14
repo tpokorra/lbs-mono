@@ -1,6 +1,7 @@
 %define name mono-llvm-opt
 %define version 3.6.99
 %define MonoPath /opt/mono
+%define GITREVISION e656caccc7dfb5c51c208906f0e176f0973f030f
 
 Summary: Mono LLVM
 Name: %{name}
@@ -11,14 +12,14 @@ License: GPL
 Group: Development/Languages/Mono
 BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus
 BuildRoot: /tmp/buildroot
-Source: mono-llvm.tar.bz2
+Source: %{GITREVISION}.tar.gz
 
 %description
 Mono LLVM
 
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
-%setup -q -n mono-llvm
+%setup -q -n llvm-%{GITREVISION}
 
 %build
 # Configure and make source
