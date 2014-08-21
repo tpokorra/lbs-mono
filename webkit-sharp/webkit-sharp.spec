@@ -11,7 +11,6 @@ Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: MIT
 Group: Development/Tools
 Source0: webkit-sharp_0.3.orig.tar.gz
-#Patch0: libwebkitgtk.patch
 BuildRequires: gcc libtool make bzip2 gcc-c++ patch mono-opt mono-opt-devel pkgconfig intltool gtk-sharp2-opt gnome-sharp2-opt
 Requires: mono-opt >= 3.2 gnome-sharp2-opt
 %if 0%{?suse_version}
@@ -20,6 +19,7 @@ Requires: libwebkitgtk-1_0-0
 Patch0: libwebkitgtk.patch
 %else
 %if 0%{?centos_version} == 700
+Patch0: centos7.patch
 BuildRequires: webkitgtk3-devel
 Requires: webkitgtk3
 %else
@@ -39,6 +39,9 @@ use WebKit library.
 %prep
 %setup -q -n webkit-sharp-%{version}
 %if 0%{?suse_version}
+%patch0 -p1
+%endif
+%if 0%{?centos_version} == 700
 %patch0 -p1
 %endif
 
