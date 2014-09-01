@@ -11,13 +11,30 @@ function buildTarBallFromTag {
   git checkout release
   . /opt/mono/env.sh
   ./configure --profile=stable
+
+  # install the certificates for nuget, see http://stackoverflow.com/questions/15181888/nuget-on-linux-error-getting-response-stream
+  # this is needed for Microsoft AspNet
+  # only apply for Monodevelop >= 5.2
+  if [ -f main/src/addins/AspNet/MonoDevelop.AspNet.csproj ]
+  then
+    if [[ "$branch" == "monodevelop-5.2-branch" || "$branch" == "monodevelop-5.3-branch" ]]
+    then
+      patch -p1 < ../nuget_aspnet_5.2.patch || exit 1
+    else
+      patch -p1 < ../nuget_aspnet.patch || exit 1
+      patch -p1 < ../NUnitRunner.patch || exit 1
+    fi
+  fi
+
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
   make dist
   cd ..
-  # adjust the spec file for correct version number
-  sed -i "s/%define version.*/%define version $version/g" monodevelop-opt*.spec
-  sed -i "s/%define fileversion.*/%define fileversion $fileversion/g" monodevelop-opt*.spec
-  cp $branch/tarballs/monodevelop-$version.tar.bz2 ~/tarball
+  if [ "`ls monodevelop-opt*.spec`" != "" ];
+    # adjust the spec file for correct version number
+    sed -i "s/%define version.*/%define version $version/g" monodevelop-opt*.spec
+    sed -i "s/%define fileversion.*/%define fileversion $fileversion/g" monodevelop-opt*.spec
+  fi
+  cp $branch/tarballs/monodevelop-$version.tar.bz2 ~/tarball/monodevelop-$fileversion.tar.bz2
   mv $branch/tarballs/monodevelop-$version.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $branch
