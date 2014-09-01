@@ -17,7 +17,7 @@ function buildTarBallFromTag {
   # only apply for Monodevelop >= 5.2
   if [ -f main/src/addins/AspNet/MonoDevelop.AspNet.csproj ]
   then
-    if [[ "$branch" == "monodevelop-5.2-branch" || "$branch" == "monodevelop-5.3-branch" ]]
+    if [[ $branch == monodevelop-5.2* || $branch == monodevelop-5.3* ]]
     then
       patch -p1 < ../nuget_aspnet_5.2.patch || exit 1
     else
