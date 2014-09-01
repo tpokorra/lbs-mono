@@ -56,7 +56,8 @@ fi
 
 #buildTarBallFromTag monodevelop-4.2.5.0 4.2.5 4.2.5.0
 #buildTarBallFromTag monodevelop-4.3.4 4.3.4 4.3.4.0
-buildTarBallFromTag monodevelop-5.4.0.178 5.4 5.4.0.178
+#buildTarBallFromTag monodevelop-5.4.0.178 5.4 5.4.0.178
+buildTarBallFromTag monodevelop-5.3.0.439 5.3 5.3.0.439
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
