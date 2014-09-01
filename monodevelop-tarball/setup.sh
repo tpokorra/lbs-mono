@@ -34,11 +34,11 @@ function buildTarBallFromTag {
     sed -i "s/%define version.*/%define version $version/g" monodevelop-opt*.spec
     sed -i "s/%define fileversion.*/%define fileversion $fileversion/g" monodevelop-opt*.spec
   fi
-  cp $branch/tarballs/monodevelop-$version.tar.bz2 ~/tarball/monodevelop-$fileversion.tar.bz2
+  cp $branch/tarballs/monodevelop-$version.tar.bz2 ~/tarball/monodevelop-$fileversion.tar.bz2 || exit 1
   mv $branch/tarballs/monodevelop-$version.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $branch
-  echo "download at http://lbs.solidcharity.com/tarballs/tpokorra/mono/monodevelop-$version.tar.bz2"
+  echo "download at http://download.lbs.solidcharity.com/tarballs/tpokorra/mono/monodevelop-$fileversion.tar.bz2"
 }
 
 mkdir ~/sources
