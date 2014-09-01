@@ -30,6 +30,7 @@ function buildTarBallFromTag {
   make dist
   cd ..
   if [ "`ls monodevelop-opt*.spec`" != "" ];
+  then
     # adjust the spec file for correct version number
     sed -i "s/%define version.*/%define version $version/g" monodevelop-opt*.spec
     sed -i "s/%define fileversion.*/%define fileversion $fileversion/g" monodevelop-opt*.spec
