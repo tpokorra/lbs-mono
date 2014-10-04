@@ -31,6 +31,10 @@ function buildTarBallFromTag {
     fi
   fi
 
+  # quick fix to include dlls and .exe files in the tarball
+  # reverting commit https://github.com/mono/monodevelop/commit/a6ce3fd8982770e8d72bfdfb1cd8c5d2c11fdd6b
+  sed -i "s#find tarballs/monodevelop#echo Disabled: find tarballs/monodevelop#g" Makefile
+
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
   make dist
   cd ..
