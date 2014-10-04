@@ -21,8 +21,13 @@ function buildTarBallFromTag {
     then
       patch -p1 < ../nuget_aspnet_5.2.patch || exit 1
     else
-      patch -p1 < ../nuget_aspnet.patch || exit 1
-      patch -p1 < ../NUnitRunner.patch || exit 1
+      if [[ "$branch" == "master" || "$branch" == "monodevelop-5.5-branch" || "$branch" == "monodevelop-5.6-branch" ]]
+      then
+        patch -p1 < ../nuget_aspnet_master.patch || exit 1
+      else
+        patch -p1 < ../nuget_aspnet.patch || exit 1
+        patch -p1 < ../NUnitRunner.patch || exit 1
+      fi
     fi
   fi
 
@@ -54,10 +59,8 @@ else
   apt-get install -y --force-yes debhelper automake make libgdiplus bash pkg-config shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt autoconf hostname
 fi
 
-#buildTarBallFromTag monodevelop-4.2.5.0 4.2.5 4.2.5.0
-#buildTarBallFromTag monodevelop-4.3.4 4.3.4 4.3.4.0
-#buildTarBallFromTag monodevelop-5.4.0.178 5.4 5.4.0.178
-buildTarBallFromTag monodevelop-5.3.0.439 5.3 5.3.0.439
+buildTarBallFromTag monodevelop-5.4.0.240 5.4 5.4.0.240
+buildTarBallFromTag monodevelop-5.5.0.227 5.5 5.5.0.227
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
