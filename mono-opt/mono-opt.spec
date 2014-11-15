@@ -1,5 +1,5 @@
 %define name mono-opt
-%define version 3.6.0
+%define version 3.10.0
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -84,6 +84,8 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 %{MonoPath}/lib/*.a
 
 %changelog
+* Sat Nov 15 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 3.10.0
 * Wed Aug 13 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 3.6.0
 * Tue Apr 01 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
