@@ -21,12 +21,12 @@ function buildTarBallFromTag {
     then
       patch -p1 < ../nuget_aspnet_5.2.patch || exit 1
     else
-      if [[ "$branch" == "master" || $branch == monodevelop-5.5* || $branch == monodevelop-5.6* || $branch == monodevelop-5.7* ]]
+      if [[ $branch == monodevelop-5.4* ]]
       then
-        patch -p1 < ../nuget_aspnet_master.patch || exit 1
-      else
         patch -p1 < ../nuget_aspnet.patch || exit 1
         patch -p1 < ../NUnitRunner.patch || exit 1
+      else
+        patch -p1 < ../nuget_aspnet_master.patch || exit 1
       fi
     fi
   fi
