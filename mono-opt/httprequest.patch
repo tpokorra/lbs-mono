@@ -1,8 +1,8 @@
 --- a/mcs/class/System/System.Net/HttpWebRequest.cs	2013-02-27 17:59:04.000000000 +0100
 +++ b/mcs/class/System/System.Net/HttpWebRequest.cs	2013-05-04 07:08:23.497720746 +0200
-@@ -926,8 +926,12 @@
- 			return result.Response;
+@@ -979,8 +979,12 @@
  		}
+ #endif
  
 +		// see https://bugzilla.xamarin.com/show_bug.cgi?id=11833
 +		internal bool asynchronous = true;
@@ -15,9 +15,9 @@
  		}
 --- a/mcs/class/System/System.Net/WebConnection.cs	2013-02-27 17:59:04.000000000 +0100
 +++ b/mcs/class/System/System.Net/WebConnection.cs	2013-05-04 07:09:16.930719147 +0200
-@@ -791,7 +791,11 @@
- 				if (!busy) {
- 					busy = true;
+@@ -811,7 +811,11 @@
+ 			lock (this) {
+ 				if (state.TrySetBusy ()) {
  					status = WebExceptionStatus.Success;
 -					ThreadPool.QueueUserWorkItem (initConn, request);
 +// see https://bugzilla.xamarin.com/show_bug.cgi?id=11833
