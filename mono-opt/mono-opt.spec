@@ -12,7 +12,7 @@ Group: Development/Languages/Mono
 BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus
 BuildRoot: /tmp/buildroot
 Source: mono-%{version}.tar.bz2
-Patch0: httprequest.patch
+#Patch0: httprequest.patch
 Patch1: fixTunneledPortSituation.patch
 
 %description
@@ -29,7 +29,7 @@ Development files for Mono
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n mono-%{version}
-%patch0 -p1
+#%patch0 -p1
 %patch1 -p1
 
 %build
