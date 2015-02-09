@@ -5,7 +5,7 @@
  		return "Could not locate web service";
  	
 -	return location + "/" + CurrentOperationName;
-+	return Request.FilePath + "/" + CurrentOperationName;
++	return PageName + "/" + CurrentOperationName;
  }
  
  string GenerateOperationMessages (string protocol, bool generateInput)
@@ -14,7 +14,7 @@
  var req;
  function getXML (command, url, qs) {
 -	if (url == "" || url.substring (0, 4) != "http")
-+	if (url == "" || (url.substring (0, 4) != "http" && url.substring(0,1) != "/"))
++	if (url == "")
  		return;
  	
  	var post_data = null;
