@@ -13,6 +13,7 @@ BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2u
 BuildRoot: /tmp/buildroot
 Source: mono-%{version}.tar.bz2
 Patch0: httprequest.patch
+Patch1: fixTunneledPortSituation.patch
 
 %description
 Mono
@@ -29,6 +30,7 @@ Development files for Mono
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n mono-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 # Configure and make source
