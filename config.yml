@@ -1,13 +1,8 @@
 lbs:
   centos:
+    '5':
+      repos: ['epel-release']
     '6':
-      repos: ['http://download.opensuse.org/repositories/home:tpokorra:mono/CentOS_CentOS-6/home:tpokorra:mono.repo']
+      repos: ['epel-release']
     '7':
-      repos: ['http://download.opensuse.org/repositories/home:tpokorra:mono/CentOS_CentOS-7/home:tpokorra:mono.repo']
-  fedora:
-    '20':
-      repos: ['http://download.opensuse.org/repositories/home:tpokorra:mono/Fedora_20/home:tpokorra:mono.repo']
-  debian:
-    wheezy:
-      repos:
-        mono-opt: 'deb http://download.opensuse.org/repositories/home:/tpokorra:/mono/Debian_7.0/ /'
+      repos: ['epel-release']

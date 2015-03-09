@@ -10,7 +10,13 @@ Release: %{release}
 Url: http://www.mono-project.com/docs/advanced/mono-llvm/
 License: NCSA
 Group: Development/Languages/Mono
-BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus python
+BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus
+%if 0%{?rhel} < 6
+BuildRequires: python26
+%else
+BuildRequires: python >= 2.5
+%endif
+
 BuildRoot: /tmp/buildroot
 Source: %{GITREVISION}.tar.gz
 
