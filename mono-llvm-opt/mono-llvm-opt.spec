@@ -49,7 +49,7 @@ make
 %if 0%{?rhel} < 6
 # need to restore python25 for rpm signing
 rm -f /usr/bin/python
-mv /usr/bin/python25.bak /usr/bin/python25
+mv /usr/bin/python25.bak /usr/bin/python
 %endif
 
 %install
