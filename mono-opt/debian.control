@@ -1,0 +1,12 @@
+Source: mono-opt
+Section: unknown
+Priority: extra
+Maintainer: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Homepage: http://mono-project.com
+
+Package: mono-opt
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Mono build from release sources

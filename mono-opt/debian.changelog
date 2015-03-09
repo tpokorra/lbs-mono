@@ -1,0 +1,63 @@
+mono-opt (3.12.1) unstable; urgency=low
+  * release with Mono 3.12.1
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Sat, 07 Mar 2015 13:33:18 +0400
+
+mono-opt (3.12.0) unstable; urgency=low
+  * release with Mono 3.12.0
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Tue, 13 Jan 2015 13:33:18 +0400
+
+mono-opt (3.10.0) unstable; urgency=low
+  * release with Mono 3.10.0
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Sat, 04 Oct 2014 13:33:18 +0400
+
+mono-opt (3.8.0) unstable; urgency=low
+  * release with Mono 3.8.0
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Thu, 04 Sep 2014 13:33:18 +0400
+
+mono-opt (3.6.0.1) unstable; urgency=low
+  * enable llvm
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Fri, 15 Aug 2014 13:33:18 +0400
+ 
+mono-opt (3.6.0) unstable; urgency=low
+  * release with Mono 3.6.0
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Wed, 13 Aug 2014 13:33:18 +0400
+ 
+mono-opt (3.4.0) unstable; urgency=low
+  * release with Mono 3.4.0
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Tue, 01 Apr 2014 13:33:18 +0400
+ 
+mono-opt (3.2.8) unstable; urgency=low
+  * release with Mono 3.2.8
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Thu, 20 Feb 2014 13:33:18 +0400
+ 
+mono-opt (3.2.6) unstable; urgency=low
+  * release with Mono 3.2.6
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Sat, 18 Jan 2014 13:33:18 +0400
+ 
+mono-opt (3.2.5-1) unstable; urgency=low
+  * include monodoc patch
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Thu, 05 Dec 2013 13:33:18 +0400
+ 
+mono-opt (3.2.5) unstable; urgency=low
+  * release with Mono 3.2.5
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Mon, 02 Dec 2013 13:33:18 +0400
+ 
+mono-opt (3.2.3) unstable; urgency=low
+  * release with Mono 3.2.3
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Wed, 25 Sep 2013 13:33:18 +0400
+ 
+mono-opt (3.2.1) unstable; urgency=low
+  * release with Mono 3.2.0-1
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Wed, 14 Aug 2013 13:33:18 +0400
+
+mono-opt (3.2.0-1) unstable; urgency=low
+  * add env.sh
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Wed, 31 Jul 2013 13:33:18 +0400
+
+mono-opt (3.2.0-0) unstable; urgency=low
+  * release with Mono 3.2.0
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Mon, 29 Jul 2013 13:33:18 +0400
+
+mono-opt (3.0.12-0) unstable; urgency=low
+  * release with Mono 3.0.12
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Wed, 17 Jul 2013 13:33:18 +0400

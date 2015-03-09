@@ -1,5 +1,5 @@
 %define name mono-opt
-%define version 3.12.0
+%define version 3.12.1
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -9,10 +9,17 @@ Release: %{release}
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development/Languages/Mono
-BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus
+BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus mono-llvm-opt mono-llvm-opt-devel
+%if 0%{?suse_version}
+BuildRequires: timezone
+Requires: timezone
+%endif
+
 BuildRoot: /tmp/buildroot
-Source: mono-%{version}.tar.bz2
-Patch0: fixTunneledPortSituation.patch
+Source: mono-%{version}.tar.gz
+Source1: env.sh
+Patch0: monothreadjoin.patch
+#Patch1: bug18690_missing_target.patch
 
 %description
 Mono
@@ -29,10 +36,11 @@ Development files for Mono
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n mono-%{version}
 %patch0 -p1
+#%patch1 -p1
 
 %build
 # Configure and make source
-./configure --prefix=%{MonoPath}
+./configure --prefix=%{MonoPath} --enable-llvm --with-llvm=%{MonoPath}
 make
 
 %install
@@ -82,10 +90,16 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 %{MonoPath}/lib/*.a
 
 %changelog
-* Mon Feb 09 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
-- Building Mono 3.12.0, with http request patch
-* Sat Nov 15 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+* Sat Mar 07 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 3.12.1
+* Tue Jan 13 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 3.12.0
+* Sat Oct 04 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 3.10.0
+* Thu Sep 04 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 3.8.0
+* Fri Aug 15 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Enabling llvm
 * Wed Aug 13 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 3.6.0
 * Tue Apr 01 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>

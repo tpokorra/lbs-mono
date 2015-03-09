@@ -1,0 +1,98 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# This is the debhelper compatibility version to use.
+export DH_COMPAT=4
+
+CFLAGS = -g
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+CFLAGS += -O0
+else
+CFLAGS += -O2
+endif
+
+build: build-stamp
+build-stamp:
+	dh_testdir
+
+	# Add here commands to compile the package.
+	./configure --prefix=/opt/mono --enable-llvm --with-llvm=/opt/mono
+	make
+	rm -Rf /tmp/buildroot
+	mkdir /tmp/buildroot
+	make DESTDIR=/tmp/buildroot install
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+
+	# Add here commands to clean up after the build process.
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	# Add here commands to install the package into debian/gentoo.
+	mkdir -p $(CURDIR)/debian/mono-opt/opt/mono
+	cp -R /tmp/buildroot/opt/mono $(CURDIR)/debian/mono-opt/opt/
+	cp /usr/src/packages/SOURCES/env.sh $(CURDIR)/debian/mono-opt/opt/mono/
+	chmod a+x $(CURDIR)/debian/mono-opt/opt/mono/env.sh
+	# fix problem with symbolic link for mono pointing at absolute pat
+	ln -sf mono-sgen $(CURDIR)/debian/mono-opt/opt/mono/bin/mono
+	# fix problems with wrong symbolic link
+	# ERROR: link target doesn't exist (neither in build root nor in installed system):
+	#   /opt/mono/lib/mono/xbuild/12.0/bin/Mono.XBuild.Tasks.dll -> /opt/mono/lib/mono/xbuild/12.0/gac/Mono.XBuild.Tasks/4.0.0.0__0738eb9f132ed756/Mono.XBuild.Tasks.dll
+	cd $(CURDIR)/debian/mono-opt/opt/mono/lib/mono/xbuild/12.0/bin; \
+	ln -sf ../../../gac/Mono.XBuild.Tasks/4.0.0.0__0738eb9f132ed756/Mono.XBuild.Tasks.dll; \
+	ln -sf ../../../gac/Microsoft.Build.Tasks.v12.0/12.0.0.0__b03f5f7f11d50a3a/Microsoft.Build.Tasks.v12.0.dll; \
+	ln -sf ../../../gac/Microsoft.Build.Framework/12.0.0.0__b03f5f7f11d50a3a/Microsoft.Build.Framework.dll; \
+	ln -sf ../../../gac/Microsoft.Build/12.0.0.0__b03f5f7f11d50a3a/Microsoft.Build.dll; \
+	ln -sf ../../../gac/Microsoft.Build.Engine/12.0.0.0__b03f5f7f11d50a3a/Microsoft.Build.Engine.dll; \
+	ln -sf ../../../gac/Microsoft.Build.Utilities.v12.0/12.0.0.0__b03f5f7f11d50a3a/Microsoft.Build.Utilities.v12.0.dll; \
+	cd -
+
+# Build architecture-independent files here.
+binary-indep: build install
+	# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+#	dh_installdebconf
+	dh_installdocs
+	dh_installexamples
+	dh_installmenu
+#	dh_installlogrotate
+#	dh_installemacsen
+#	dh_installpam
+#	dh_installmime
+#	dh_installinit
+	dh_installcron
+	dh_installman
+	dh_installinfo
+#	dh_undocumented
+	dh_installchangelogs
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+#	dh_makeshlibs
+	dh_installdeb
+#	dh_perl
+#	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install
