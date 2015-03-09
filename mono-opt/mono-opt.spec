@@ -40,7 +40,15 @@ Development files for Mono
 
 %build
 # Configure and make source
+%if 0%{?rhel} < 6
+%ifarch x86_64
+./configure --prefix=%{MonoPath} --enable-llvm --with-llvm=%{MonoPath} --enable-shared-=no
+%else
 ./configure --prefix=%{MonoPath} --enable-llvm --with-llvm=%{MonoPath}
+%endif
+%else
+./configure --prefix=%{MonoPath} --enable-llvm --with-llvm=%{MonoPath}
+%endif
 make
 
 %install
