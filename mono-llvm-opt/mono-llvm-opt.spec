@@ -38,13 +38,19 @@ Development files for Mono LLVM backend
 
 %if 0%{?rhel} < 6
 # need to make python26 the default
-rm -f /usr/bin/python
+mv /usr/bin/python /usr/bin/python25.bak
 ln -s /usr/bin/python26 /usr/bin/python
 %endif
 
 # Configure and make source
 ./configure --prefix=%{MonoPath} --enable-optimized --enable-targets=host
 make
+
+%if 0%{?rhel} < 6
+# need to restore python25 for rpm signing
+rm -f /usr/bin/python
+mv /usr/bin/python25.bak /usr/bin/python25
+%endif
 
 %install
 rm -rf %{buildroot}
