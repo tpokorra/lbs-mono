@@ -35,6 +35,13 @@ Development files for Mono LLVM backend
 %setup -q -n llvm-%{GITREVISION}
 
 %build
+
+%if 0%{?rhel} < 6
+# need to make python26 the default
+rm -f /usr/bin/python
+ln -s /usr/bin/python26 /usr/bin/python
+%endif
+
 # Configure and make source
 ./configure --prefix=%{MonoPath} --enable-optimized --enable-targets=host
 make
