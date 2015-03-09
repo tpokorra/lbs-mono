@@ -18,7 +18,7 @@ build-stamp:
 	dh_testdir
 
 	# Add here commands to compile the package.
-	./configure --prefix=/opt/mono --enable-optimized --enable-targets=x86_64
+	./configure --prefix=/opt/mono --enable-optimized --enable-targets=host
 	make
 	rm -Rf /tmp/buildroot
 	mkdir /tmp/buildroot

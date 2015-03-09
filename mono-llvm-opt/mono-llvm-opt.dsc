@@ -4,6 +4,6 @@ Version: 0.1
 Binary: mono-llvm-opt
 Maintainer: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 Architecture: any
-Build-Depends: debhelper (>= 8.0.0)
+Build-Depends: debhelper (>= 8.0.0), python (>= 2.5)
 Files: 
  abc 0 mono-llvm.tar.gz
