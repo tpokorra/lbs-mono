@@ -9,7 +9,7 @@ Release: %{release}
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development/Languages/Mono
-BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus mono-llvm-opt mono-llvm-opt-devel
+BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus mono-llvm-opt mono-llvm-opt-devel mono-core mono-devel
 %if 0%{?suse_version}
 BuildRequires: timezone
 Requires: timezone
