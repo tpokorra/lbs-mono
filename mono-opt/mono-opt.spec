@@ -16,7 +16,7 @@ Requires: timezone
 %endif
 
 BuildRoot: /tmp/buildroot
-Source: mono-%{version}.tar.gz
+Source: mono-%{version}.tar.bz2
 Source1: env.sh
 Patch0: monothreadjoin.patch
 #Patch1: bug18690_missing_target.patch
