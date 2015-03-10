@@ -1,7 +1,7 @@
 lbs:
   centos:
     '5':
-      repos: ['epel-release']
+      repos: ['epel-release', 'http://people.centos.org/tru/devtools-2/devtools-2.repo']
     '6':
       repos: ['epel-release']
     '7':

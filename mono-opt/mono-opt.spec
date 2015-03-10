@@ -9,7 +9,11 @@ Release: %{release}
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development/Languages/Mono
-BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus mono-llvm-opt mono-llvm-opt-devel mono-core mono-devel
+BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus mono-llvm-opt mono-llvm-opt-devel
+%if 0%{?rhel} < 6
+# need newer gcc version
+BuildRequires: devtoolset-2
+%endif
 %if 0%{?suse_version}
 BuildRequires: timezone
 Requires: timezone
@@ -39,16 +43,17 @@ Development files for Mono
 #%patch1 -p1
 
 %build
-# Configure and make source
+
 %if 0%{?rhel} < 6
-%ifarch x86_64
-./configure --prefix=%{MonoPath} --enable-llvm --with-llvm=%{MonoPath} --enable-shared-=no
-%else
-./configure --prefix=%{MonoPath} --enable-llvm --with-llvm=%{MonoPath}
+# we need a newer gcc
+PATH=/opt/rh/devtoolset-2/root/usr/bin:$PATH
+CC=/opt/rh/devtoolset-2/root/usr/bin/gcc
+CPP=/opt/rh/devtoolset-2/root/usr/bin/cpp
+CXX=/opt/rh/devtoolset-2/root/usr/bin/c++
 %endif
-%else
+
+# Configure and make source
 ./configure --prefix=%{MonoPath} --enable-llvm --with-llvm=%{MonoPath}
-%endif
 make
 
 %install
