@@ -13,6 +13,8 @@ Group: Development/Languages/Mono
 BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus
 %if 0%{?rhel} < 6
 BuildRequires: python26
+# need newer gcc version
+BuildRequires: devtoolset-2
 %else
 BuildRequires: python >= 2.5
 %endif
@@ -35,6 +37,14 @@ Development files for Mono LLVM backend
 %setup -q -n llvm-%{GITREVISION}
 
 %build
+
+%if 0%{?rhel} < 6
+# we need a newer gcc
+PATH=/opt/rh/devtoolset-2/root/usr/bin:$PATH
+CC=/opt/rh/devtoolset-2/root/usr/bin/gcc
+CPP=/opt/rh/devtoolset-2/root/usr/bin/cpp
+CXX=/opt/rh/devtoolset-2/root/usr/bin/c++
+%endif
 
 %if 0%{?rhel} < 6
 # need to make python26 the default
