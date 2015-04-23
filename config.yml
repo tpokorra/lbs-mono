@@ -3,6 +3,6 @@ lbs:
     '5':
       repos: ['epel-release', 'http://people.centos.org/tru/devtools-2/devtools-2.repo']
     '6':
-      repos: ['epel-release']
+      repos: ['epel-release', 'http://download.opensuse.org/repositories/home:tpokorra:mono/CentOS_CentOS-6/home:tpokorra:mono.repo']
     '7':
-      repos: ['epel-release']
+      repos: ['epel-release', 'http://download.opensuse.org/repositories/home:tpokorra:mono/CentOS_CentOS-7/home:tpokorra:mono.repo']
