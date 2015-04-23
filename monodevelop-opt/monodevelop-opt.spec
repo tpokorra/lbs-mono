@@ -11,9 +11,9 @@ Release: 0
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: none
-BuildRequires: automake autoconf libtool mono-opt >= 3.0 mono-opt-devel libgdiplus pkgconfig shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt nuget
-BuildRequires: pkgconfig(nunit) >= 2.6.3
-Requires: mono-opt >= 3.0 mono-opt-devel libgdiplus pkgconfig gnome-sharp2-opt gtk-sharp2-opt mono-libgdiplus-opt mono-tools-opt
+BuildRequires: automake autoconf libtool mono-opt >= 3.12 mono-opt-devel libgdiplus pkgconfig shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt nuget-opt
+BuildRequires: nunit-opt >= 2.6.3
+Requires: mono-opt >= 3.12 mono-opt-devel libgdiplus pkgconfig gnome-sharp2-opt gtk-sharp2-opt mono-libgdiplus-opt mono-tools-opt
 BuildRoot: /tmp/buildroot
 Source: monodevelop-%{fileversion}.tar.bz2
 
