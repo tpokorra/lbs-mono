@@ -1,4 +1,4 @@
 lbs:
   source:
-    download: ["http://download.mono-project.com/sources/monodevelop/monodevelop-5.0-0.tar.bz2"]
-    #download: [http://files.pokorra.de/mono/tarballs/monodevelop-4.2.5.tar.bz2]
+    #download: ["http://download.mono-project.com/sources/monodevelop/monodevelop-5.0-0.tar.bz2"]
+    download: ["https://download.solidcharity.com/tarballs/tpokorra/mono/monodevelop-5.9.0.431.tar.bz2"]
