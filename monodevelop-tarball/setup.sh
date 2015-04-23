@@ -12,14 +12,6 @@ function buildTarBallFromTag {
   . /opt/mono/env.sh
   ./configure --profile=stable
 
-  # install the certificates for nuget, see http://stackoverflow.com/questions/15181888/nuget-on-linux-error-getting-response-stream
-  # this is needed for Microsoft AspNet
-  patch -p1 < ../nuget_aspnet_master.patch || exit 1
-
-  # quick fix to include dlls and .exe files in the tarball
-  # reverting commit https://github.com/mono/monodevelop/commit/a6ce3fd8982770e8d72bfdfb1cd8c5d2c11fdd6b
-  sed -i "s#find tarballs/monodevelop#echo Disabled: find tarballs/monodevelop#g" Makefile
-
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
   make dist
   cd ..
