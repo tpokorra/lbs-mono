@@ -38,11 +38,12 @@ function buildTarBallFromTag {
 
 mkdir ~/sources
 
+yum install -y git-core make automake autoconf libtool tar which gcc-c++ gettext bzip2 wget
+
 cd /etc/yum.repos.d/
 wget http://download.opensuse.org/repositories/home:tpokorra:mono/Fedora_21/home:tpokorra:mono.repo
 cd -
 
-yum install -y git-core make automake autoconf libtool tar which gcc-c++ gettext bzip2
 yum install -y automake autoconf libtool mono-opt mono-opt-devel libgdiplus pkgconfig shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt
 
 #buildTarBallFromTag monodevelop-5.6.3.3 5.6.3 5.6.3.3
