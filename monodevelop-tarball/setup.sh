@@ -25,7 +25,7 @@ function buildTarBallFromTag {
   mv $branch/tarballs/monodevelop-$version.tar.bz2 ~/sources
 
   echo "DONE with building the tarball for " $branch
-  echo "download at http://download.lbs.solidcharity.com/tarballs/tpokorra/mono/monodevelop-$fileversion.tar.bz2"
+  echo "download at https://download.solidcharity.com/tarballs/tpokorra/mono/monodevelop-$fileversion.tar.bz2"
 }
 
 mkdir ~/sources
