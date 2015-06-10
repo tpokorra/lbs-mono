@@ -23,8 +23,6 @@ Requires: timezone
 BuildRoot: /tmp/buildroot
 Source: mono-%{fileversion}.tar.bz2
 Source1: env.sh
-Patch0: monothreadjoin.patch
-#Patch1: bug18690_missing_target.patch
 
 %description
 Mono
@@ -40,8 +38,6 @@ Development files for Mono
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n mono-%{version}
-%patch0 -p1
-#%patch1 -p1
 
 %build
 
