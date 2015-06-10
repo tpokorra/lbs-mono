@@ -1,5 +1,6 @@
 %define name mono-opt
-%define version 3.12.1
+%define version 4.0.1
+%define fileversion 4.0.1.44
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -20,7 +21,7 @@ Requires: timezone
 %endif
 
 BuildRoot: /tmp/buildroot
-Source: mono-%{version}.tar.bz2
+Source: mono-%{fileversion}.tar.bz2
 Source1: env.sh
 Patch0: monothreadjoin.patch
 #Patch1: bug18690_missing_target.patch
@@ -103,6 +104,8 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 %{MonoPath}/lib/*.a
 
 %changelog
+* Wed Jun 10 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 4.0.1.44
 * Sat Mar 07 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 3.12.1
 * Tue Jan 13 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>

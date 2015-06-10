@@ -1,3 +1,7 @@
 lbs:
   source:
+<<<<<<< HEAD
+    download: ["http://download.mono-project.com/sources/mono/mono-4.0.1.44.tar.bz2"]
+=======
     download: ["http://download.mono-project.com/sources/mono/mono-3.12.1.tar.bz2"]
+>>>>>>> 867f9ad815df2c8ad00a455e29e9ff34cb3d42dc
