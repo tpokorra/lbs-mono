@@ -1,6 +1,6 @@
 %define name mono-opt
-%define version 4.0.1
-%define fileversion 4.0.1.44
+%define version 4.0.2
+%define fileversion 4.0.2.5
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -100,6 +100,8 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 %{MonoPath}/lib/*.a
 
 %changelog
+* Thu Jul 2 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 4.0.2.5
 * Wed Jun 10 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 4.0.1.44
 * Sat Mar 07 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
