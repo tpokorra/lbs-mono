@@ -27,6 +27,7 @@ Source1: env.sh
 %description
 Mono
 
+%if 0%{?suse_version}
 %package devel
 License:      GPL
 Group:        Development/Libraries
@@ -34,6 +35,7 @@ Summary:      development files for Mono
 Requires:     %{name} = %{version}
 %description devel
 Development files for Mono
+%endif
 
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
@@ -87,19 +89,25 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 %postun -p /sbin/ldconfig
 
 %files
+%if 0%{?suse_version}
 %exclude %{MonoPath}/include
 %exclude %{MonoPath}/lib/pkgconfig
 %exclude %{MonoPath}/lib/*.a
 %exclude %{MonoPath}/lib/*.so
+%endif
 %{MonoPath}
 
+%if 0%{?suse_version}
 %files devel
 %{MonoPath}/include
 %{MonoPath}/lib/pkgconfig
 %{MonoPath}/lib/*.so
 %{MonoPath}/lib/*.a
+%endif
 
 %changelog
+* Mon Jul 13 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Do not build extra package mono-opt-devel, apart from OpenSUSE
 * Thu Jul 2 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 4.0.2.5
 * Wed Jun 10 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
