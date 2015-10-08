@@ -1,6 +1,6 @@
 %define name monodevelop-opt
-%define version 5.9
-%define fileversion 5.9.0.431
+%define version 5.9.6
+%define fileversion 5.9.6.32
 %define MonoPath /opt/mono
 %define MonoDevelopPath /opt/monodevelop
 
@@ -68,6 +68,8 @@ chmod a+x %{buildroot}/usr/bin/monodevelop-opt
 /usr/share/icons/hicolor/scalable/apps/monodevelop-opt.svg
 
 %changelog
+* Thu Oct 08 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- build 5.9.6.23
 * Thu Apr 23 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - build 5.9
 * Sat May 31 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>

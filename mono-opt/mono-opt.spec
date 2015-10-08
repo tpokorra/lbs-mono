@@ -1,6 +1,6 @@
 %define name mono-opt
-%define version 4.0.2
-%define fileversion 4.0.2.5
+%define version 4.0.4
+%define fileversion 4.0.4.1
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -106,6 +106,8 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 %endif
 
 %changelog
+* Thu Oct 08 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 4.0.4.1
 * Mon Jul 13 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Do not build extra package mono-opt-devel, apart from OpenSUSE
 * Thu Jul 2 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
