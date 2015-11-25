@@ -17,7 +17,7 @@ BuildRequires: python26
 %else
 BuildRequires: python >= 2.5
 %endif
-if 0%{?rhel} < 7
+%if 0%{?rhel} < 7
 # need newer gcc version
 BuildRequires: devtoolset-2
 %endif
