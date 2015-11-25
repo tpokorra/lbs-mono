@@ -1,22 +1,25 @@
 %define name mono-llvm-opt
-%define version 3.6.99
+%define version 4.2.1
 %define MonoPath /opt/mono
-%define GITREVISION e656caccc7dfb5c51c208906f0e176f0973f030f
+%define GITREVISION 38603e0a3d6448b0b9edeb1a06ea78501515cec8
 
 Summary: Mono LLVM
 Name: %{name}
 Version: %{version}
-Release: %{release}
+Release: 2
 Url: http://www.mono-project.com/docs/advanced/mono-llvm/
 License: NCSA
 Group: Development/Languages/Mono
-BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus
+BuildRequires: gcc >= 4.7
+BuildRequires: libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus python
 %if 0%{?rhel} < 6
 BuildRequires: python26
-# need newer gcc version
-BuildRequires: devtoolset-2
 %else
 BuildRequires: python >= 2.5
+%endif
+if 0%{?rhel} < 7
+# need newer gcc version
+BuildRequires: devtoolset-2
 %endif
 
 BuildRoot: /tmp/buildroot
@@ -38,7 +41,7 @@ Development files for Mono LLVM backend
 
 %build
 
-%if 0%{?rhel} < 6
+%if 0%{?rhel} < 7
 # we need a newer gcc
 PATH=/opt/rh/devtoolset-2/root/usr/bin:$PATH
 CC=/opt/rh/devtoolset-2/root/usr/bin/gcc
@@ -89,5 +92,8 @@ chmod a-x %{buildroot}/opt/mono/lib/*.a
 %{MonoPath}/lib/*.a
 
 %changelog
+* Tue Nov 24 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.1-2
+- update to latest Mono LLVM from Github, required for Mono 4.2
 * Thu Aug 14 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono LLVM 3.6.99
+
