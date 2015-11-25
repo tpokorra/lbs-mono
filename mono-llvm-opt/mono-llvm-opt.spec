@@ -6,7 +6,7 @@
 Summary: Mono LLVM
 Name: %{name}
 Version: %{version}
-Release: 4
+Release: 5
 Url: http://www.mono-project.com/docs/advanced/mono-llvm/
 License: NCSA
 Group: Development/Languages/Mono
@@ -52,11 +52,11 @@ CXX=/opt/rh/devtoolset-2/root/usr/bin/c++
 
 %if 0%{?rhel} < 6
 # need to use python26
-PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python26
+%define PYTHON --with-python=/usr/bin/python26
 %endif
 
 # Configure and make source
-./configure --prefix=%{MonoPath} --enable-optimized --enable-targets=host
+./configure --prefix=%{MonoPath} --enable-optimized --enable-targets=host %{PYTHON}
 make
 
 %install
@@ -86,7 +86,7 @@ chmod a-x %{buildroot}/opt/mono/lib/*.a
 %{MonoPath}/lib/*.a
 
 %changelog
-* Tue Nov 24 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.1-4
+* Tue Nov 24 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.1-5
 - update to latest Mono LLVM from Github, required for Mono 4.2
 * Thu Aug 14 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono LLVM 3.6.99
