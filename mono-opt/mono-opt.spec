@@ -1,19 +1,21 @@
 %define name mono-opt
-%define version 4.0.4
-%define fileversion 4.0.4.1
+%define version 4.2.1
+%define fileversion 4.2.1.102
 %define MonoPath /opt/mono
 
 Summary: Mono
 Name: %{name}
 Version: %{version}
-Release: %{release}
+Release: 1
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development/Languages/Mono
-BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus mono-llvm-opt mono-llvm-opt-devel
-%if 0%{?rhel} < 6
+BuildRequires: bison gettext make bzip2 automake patch dos2unix libgdiplus mono-llvm-opt mono-llvm-opt-devel
+%if 0%{?rhel} < 7
 # need newer gcc version
-BuildRequires: devtoolset-2
+BuildRequires: devtoolset-2-gcc >= 4.7 devtoolset-2-gcc-c++ devtoolset-2-binutils
+%else
+BuildRequires: gcc >= 4.7 gcc-c++ libtool
 %endif
 %if 0%{?suse_version}
 BuildRequires: timezone
@@ -43,7 +45,7 @@ Development files for Mono
 
 %build
 
-%if 0%{?rhel} < 6
+%if 0%{?rhel} < 7
 # we need a newer gcc
 PATH=/opt/rh/devtoolset-2/root/usr/bin:$PATH
 CC=/opt/rh/devtoolset-2/root/usr/bin/gcc
@@ -56,6 +58,15 @@ CXX=/opt/rh/devtoolset-2/root/usr/bin/c++
 make
 
 %install
+
+%if 0%{?rhel} < 7
+# we need a newer gcc
+PATH=/opt/rh/devtoolset-2/root/usr/bin:$PATH
+CC=/opt/rh/devtoolset-2/root/usr/bin/gcc
+CPP=/opt/rh/devtoolset-2/root/usr/bin/cpp
+CXX=/opt/rh/devtoolset-2/root/usr/bin/c++
+%endif
+
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 find %{buildroot} -iname "*.dll.so" -exec rm '{}' ';'
@@ -106,6 +117,8 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 %endif
 
 %changelog
+* Tue Nov 24 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.1-1
+- update to Mono 4.2
 * Thu Oct 08 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 4.0.4.1
 * Mon Jul 13 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
