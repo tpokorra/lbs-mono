@@ -1,0 +1,76 @@
+--- a/tests/TestRunner/TestRunner.csproj	2015-05-16 21:53:32.700385402 +0200
++++ b/tests/TestRunner/TestRunner.csproj	2015-05-16 21:54:28.620382789 +0200
+@@ -34,16 +34,16 @@
+     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+     <Reference Include="System.Core" />
+     <Reference Include="nunit-console-runner">
+-      <HintPath>..\..\external\mdtestharness\lib\nunit-console-runner.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit-console-runner.dll</HintPath>
+     </Reference>
+     <Reference Include="nunit.core">
+-      <HintPath>..\..\external\mdtestharness\lib\nunit.core.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.core.dll</HintPath>
+     </Reference>
+     <Reference Include="nunit.core.interfaces">
+-      <HintPath>..\..\external\mdtestharness\lib\nunit.core.interfaces.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.core.interfaces.dll</HintPath>
+     </Reference>
+     <Reference Include="nunit.framework">
+-      <HintPath>..\..\external\mdtestharness\nunit.framework.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.framework.dll</HintPath>
+     </Reference>
+   </ItemGroup>
+   <ItemGroup>
+--- a/src/addins/NUnit/NUnitRunner/NUnitRunner.csproj	2015-05-16 20:14:11.374699544 +0200
++++ b/src/addins/NUnit/NUnitRunner/NUnitRunner.csproj	2015-05-16 20:15:19.873298858 +0200
+@@ -38,13 +38,13 @@
+     <Reference Include="System" />
+     <Reference Include="System.Xml" />
+     <Reference Include="nunit.framework">
+-      <HintPath>..\..\..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.framework.dll</HintPath>
+     </Reference>
+     <Reference Include="nunit.core">
+-      <HintPath>..\..\..\..\packages\NUnit.Runners.2.6.3\tools\lib\nunit.core.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.core.dll</HintPath>
+     </Reference>
+     <Reference Include="nunit.core.interfaces">
+-      <HintPath>..\..\..\..\packages\NUnit.Runners.2.6.3\tools\lib\nunit.core.interfaces.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.core.interfaces.dll</HintPath>
+     </Reference>
+   </ItemGroup>
+   <ItemGroup>
+--- a/src/addins/NUnit/MonoDevelop.NUnit.csproj	2015-05-16 21:06:38.812516891 +0200
++++ b/src/addins/NUnit/MonoDevelop.NUnit.csproj	2015-05-16 21:07:41.544513960 +0200
+@@ -64,16 +64,16 @@
+     <Reference Include="System.Xml.Linq" />
+     <Reference Include="System.Core" />
+     <Reference Include="nunit.framework">
+-      <HintPath>..\..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.framework.dll</HintPath>
+     </Reference>
+     <Reference Include="nunit.core">
+-      <HintPath>..\..\..\packages\NUnit.Runners.2.6.3\tools\lib\nunit.core.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.core.dll</HintPath>
+     </Reference>
+     <Reference Include="nunit.core.interfaces">
+-      <HintPath>..\..\..\packages\NUnit.Runners.2.6.3\tools\lib\nunit.core.interfaces.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.core.interfaces.dll</HintPath>
+     </Reference>
+     <Reference Include="nunit.util">
+-      <HintPath>..\..\..\packages\NUnit.Runners.2.6.3\tools\lib\nunit.util.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.util.dll</HintPath>
+     </Reference>
+   </ItemGroup>
+   <ItemGroup>
+--- a/external/nrefactory/ICSharpCode.NRefactory.Tests/ICSharpCode.NRefactory.Tests.csproj	2015-05-16 21:43:51.488412561 +0200
++++ b/external/nrefactory/ICSharpCode.NRefactory.Tests/ICSharpCode.NRefactory.Tests.csproj	2015-05-16 21:47:13.740403110 +0200
+@@ -87,7 +87,7 @@
+     <Reference Include="System.Xml" />
+     <Reference Include="System.Xml.Linq" />
+     <Reference Include="nunit.framework">
+-      <HintPath>..\..\cecil\Test\libs\nunit-2.5.10\nunit.framework.dll</HintPath>
++      <HintPath>/opt/mono/lib/mono/nunit/nunit.framework.dll</HintPath>
+     </Reference>
+   </ItemGroup>
+   <ItemGroup>
