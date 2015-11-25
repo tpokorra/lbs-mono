@@ -1,6 +1,7 @@
 %define name monodevelop-opt
-%define version 5.9.6
-%define fileversion 5.9.6.32
+%define version 5.10.0
+%define tarballpath 5.10
+%define fileversion 5.10.0.871
 %define MonoPath /opt/mono
 %define MonoDevelopPath /opt/monodevelop
 
@@ -11,23 +12,33 @@ Release: 0
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: none
-BuildRequires: automake autoconf libtool mono-opt >= 3.12 mono-opt-devel libgdiplus pkgconfig shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt nuget-opt
-BuildRequires: nunit-opt >= 2.6.3
-Requires: mono-opt >= 3.12 mono-opt-devel libgdiplus pkgconfig gnome-sharp2-opt gtk-sharp2-opt mono-libgdiplus-opt mono-tools-opt
+BuildRequires: automake autoconf libtool mono-opt >= 3.12 libgdiplus pkgconfig shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt nuget-opt
+BuildRequires: nunit-opt >= 2.6.3 nunit-opt-devel
+BuildRequires: cmake git
+BuildRequires: libssh2-devel
+Requires: mono-opt >= 4.2 mono-opt-devel libgdiplus pkgconfig gnome-sharp2-opt gtk-sharp2-opt mono-libgdiplus-opt mono-tools-opt
 BuildRoot: /tmp/buildroot
 Source: monodevelop-%{fileversion}.tar.bz2
+Patch:  downgrade_to_mvc3.patch
 
 %description
 MonoDevelop
 
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
-%setup -q -n monodevelop-%{version}
+%setup -q -n monodevelop-%{tarballpath}
+%patch -p1
 
 %build
 # Configure and make source
 . %{MonoPath}/env.sh
-./configure --prefix=%{MonoDevelopPath}
+%configure --prefix=%{MonoDevelopPath} --libdir=/opt/mono/lib --disable-update-mimedb
+cd ./external/libgit2sharp/Lib/CustomBuildTasks
+xbuild CustomBuildTasks.csproj
+mv bin/Debug/* .
+cd ../../../../
+# need to import the certificates for nuget
+mozroots --import --machine --sync
 make
 
 %install
@@ -68,6 +79,8 @@ chmod a+x %{buildroot}/usr/bin/monodevelop-opt
 /usr/share/icons/hicolor/scalable/apps/monodevelop-opt.svg
 
 %changelog
+* Wed Nov 25 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 5.10.0-0
+- build 5.10.0.871
 * Thu Oct 08 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - build 5.9.6.23
 * Thu Apr 23 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
