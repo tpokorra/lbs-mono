@@ -17,7 +17,7 @@
 
 Name:           nuget-opt
 Version:        2.8.7
-Release:        1
+Release:        2
 Summary:        Package manager for NuGet repositories
 License:        MIT
 Group:          Development/Libraries/Other
@@ -63,7 +63,7 @@ chmod a+x %{SOURCE3}
 %{__mkdir_p} %{buildroot}%{MonoPath}/lib/pkgconfig
 %{__mkdir_p} %{buildroot}%{MonoPath}/bin
 %{__install} -m0644 %{SOURCE1} %{buildroot}%{MonoPath}/lib/pkgconfig/
-%{__install} -m0755 %{SOURCE2} %{buildroot}%{MonoPath}/bin/`basename -s .sh %{SOURCE2}`
+%{__install} -m0755 %{SOURCE2} %{buildroot}%{MonoPath}/bin/nuget
 sed -i -e 's/cli/mono/' %{buildroot}%{MonoPath}/bin/*
 %{__install} -m0755 src/CommandLine/bin/Release/NuGet.Core.dll %{buildroot}%{MonoPath}/lib/nuget/
 %{__install} -m0755 xdt/XmlTransform/bin/Debug/Microsoft.Web.XmlTransform.dll %{buildroot}%{MonoPath}/lib/nuget/
@@ -76,7 +76,7 @@ sed -i -e 's/cli/mono/' %{buildroot}%{MonoPath}/bin/*
 %{MonoPath}/bin/*
 
 %changelog
-* Wed Nov 25 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 2.8.7-1
+* Wed Nov 25 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 2.8.7-2
 - new release 2.8.7
 
 * Thu Apr 23 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 2.8.3-2

@@ -1,3 +1,4 @@
 #!/bin/sh
-exec /usr/bin/cli /usr/lib/nuget/NuGet.exe "$@"
+exec /opt/mono/bin/mono /opt/mono/lib/nuget/NuGet.exe "$@"
+
 
