@@ -6,12 +6,11 @@
 Summary: Mono LLVM
 Name: %{name}
 Version: %{version}
-Release: 3
+Release: 4
 Url: http://www.mono-project.com/docs/advanced/mono-llvm/
 License: NCSA
 Group: Development/Languages/Mono
-BuildRequires: gcc >= 4.7
-BuildRequires: libtool bison gettext make bzip2 automake gcc-c++ patch dos2unix libgdiplus python
+BuildRequires: bison gettext make bzip2 automake patch dos2unix libgdiplus python
 %if 0%{?rhel} < 6
 BuildRequires: python26
 %else
@@ -19,7 +18,9 @@ BuildRequires: python >= 2.5
 %endif
 %if 0%{?rhel} < 7
 # need newer gcc version
-BuildRequires: devtoolset-2
+BuildRequires: devtoolset-2-gcc >= 4.7 devtoolset-2-gcc-c++ devtoolset-2-binutils
+%else
+BuildRequires: gcc >= 4.7 gcc-c++ libtool
 %endif
 
 BuildRoot: /tmp/buildroot
@@ -51,11 +52,11 @@ CXX=/opt/rh/devtoolset-2/root/usr/bin/c++
 
 %if 0%{?rhel} < 6
 # need to use python26
-%define PYTHON -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python26
+PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python26
 %endif
 
 # Configure and make source
-./configure --prefix=%{MonoPath} --enable-optimized --enable-targets=host %{PYTHON}
+./configure --prefix=%{MonoPath} --enable-optimized --enable-targets=host
 make
 
 %install
@@ -85,7 +86,7 @@ chmod a-x %{buildroot}/opt/mono/lib/*.a
 %{MonoPath}/lib/*.a
 
 %changelog
-* Tue Nov 24 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.1-3
+* Tue Nov 24 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.1-4
 - update to latest Mono LLVM from Github, required for Mono 4.2
 * Thu Aug 14 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono LLVM 3.6.99
