@@ -1,16 +1,20 @@
 %define name mono-libgdiplus-opt
-%define version 3.0.12
+%define version 4.2
 %define MonoPath /opt/mono
 
 Summary: links for libgdiplus for Mono
 Name: %{name}
 Version: %{version}
-Release: %{release}
+Release: 1
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development
 Requires: pkgconfig mono-opt libgdiplus
+%if 0%{?suse_version}
+Requires: liberation-fonts
+%else
 Requires: liberation-mono-fonts
+%endif
 
 BuildRequires: mono-opt libgdiplus
 BuildRoot: /tmp/buildroot
@@ -45,6 +49,7 @@ fi
 %post
 
 %changelog
+* Tue Nov 19 2013 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- OpenSUSE has a different name for liberation-mono-fonts
 * Thu Jul 11 2013 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - First build
-
