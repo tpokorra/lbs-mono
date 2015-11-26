@@ -1,0 +1,4 @@
+lbs:
+  source:
+    download: 
+      e272a2c006211b6b03be2ef5bbb9e3f8fefd0768.tar.gz: https://github.com/mono/xsp/commit/e272a2c006211b6b03be2ef5bbb9e3f8fefd0768
