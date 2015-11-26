@@ -8,7 +8,7 @@
 Summary: MonoDevelop
 Name: %{name}
 Version: %{version}
-Release: 0
+Release: 3
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: none
@@ -16,10 +16,12 @@ BuildRequires: automake autoconf libtool mono-opt >= 3.12 libgdiplus pkgconfig s
 BuildRequires: nunit-opt >= 2.6.3 nunit-opt-devel
 BuildRequires: cmake git
 BuildRequires: libssh2-devel
+BuildRequires: newtonsoft-json-opt
 Requires: mono-opt >= 4.2 mono-opt-devel libgdiplus pkgconfig gnome-sharp2-opt gtk-sharp2-opt mono-libgdiplus-opt mono-tools-opt
 BuildRoot: /tmp/buildroot
 Source: monodevelop-%{fileversion}.tar.bz2
 Patch:  downgrade_to_mvc3.patch
+Patch1: monodevelop-5.10-no_nuget_packages.patch
 
 %description
 MonoDevelop
@@ -28,17 +30,25 @@ MonoDevelop
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n monodevelop-%{tarballpath}
 %patch -p1
+%patch1 -p1
 
 %build
 # Configure and make source
 . %{MonoPath}/env.sh
+for f in tests/TestRunner/TestRunner.csproj tests/UserInterfaceTests/UserInterfaceTests.csproj src/addins/NUnit/NUnitRunner/NUnitRunner.csproj src/addins/NUnit/MonoDevelop.NUnit.csproj external/nrefactory/ICSharpCode.NRefactory.Tests/ICSharpCode.NRefactory.Tests.csproj
+do 
+  echo $f
+  sed -i "s#<HintPath>.*nunit\.#<HintPath>/opt/mono/lib/mono/nunit/nunit.#g" $f
+done
+for f in tests/UserInterfaceTests/UserInterfaceTests.csproj
+do
+  sed -i "s#<HintPath>.*Newtonsoft\.Json\.dll#<HintPath>/opt/mono/lib/mono/newtonsoft-json/Newtonsoft.Json.dll#g" $f
+done
 %configure --prefix=%{MonoDevelopPath} --libdir=/opt/mono/lib --disable-update-mimedb
 cd ./external/libgit2sharp/Lib/CustomBuildTasks
 xbuild CustomBuildTasks.csproj
 mv bin/Debug/* .
 cd ../../../../
-# need to import the certificates for nuget
-mozroots --import --machine --sync
 make
 
 %install
@@ -47,8 +57,7 @@ make DESTDIR=%{buildroot} install
 find %{buildroot} -iname "*.dll.so" -exec rm '{}' ';'
 mkdir -p %{buildroot}/usr/share/icons
 mkdir -p %{buildroot}/usr/share/applications
-cp -R %{buildroot}/%{MonoDevelopPath}/share/applications/monodevelop.desktop %{buildroot}/usr/share/applications/monodevelop-opt.desktop
-cp -R %{buildroot}/%{MonoDevelopPath}/share/icons/* %{buildroot}/usr/share/icons
+mv %{buildroot}/usr/share/applications/monodevelop.desktop %{buildroot}/usr/share/applications/monodevelop-opt.desktop
 mv %{buildroot}/usr/share/icons/hicolor/16x16/apps/monodevelop.png %{buildroot}/usr/share/icons/hicolor/16x16/apps/monodevelop-opt.png
 mv %{buildroot}/usr/share/icons/hicolor/22x22/apps/monodevelop.png %{buildroot}/usr/share/icons/hicolor/22x22/apps/monodevelop-opt.png
 mv %{buildroot}/usr/share/icons/hicolor/24x24/apps/monodevelop.png %{buildroot}/usr/share/icons/hicolor/24x24/apps/monodevelop-opt.png
@@ -59,8 +68,12 @@ sed -i 's/Exec=monodevelop/Exec=monodevelop-opt/g' %{buildroot}/usr/share/applic
 sed -i 's/Name=MonoDevelop/Name=MonoDevelop 4/g' %{buildroot}/usr/share/applications/monodevelop-opt.desktop
 sed -i 's/Icon=monodevelop/Icon=monodevelop-opt/g' %{buildroot}/usr/share/applications/monodevelop-opt.desktop
 mkdir -p %{buildroot}/usr/bin
-echo "export PATH=/opt/mono/bin:$PATH;export LD_LIBRARY_PATH=/opt/mono/lib:$LD_LIBRARY_PATH; exec /opt/monodevelop/bin/monodevelop \"$@\"" > %{buildroot}/usr/bin/monodevelop-opt
+echo ". /opt/mono/env.sh; exec /opt/monodevelop/bin/monodevelop \"$@\"" > %{buildroot}/usr/bin/monodevelop-opt
+echo ". /opt/mono/env.sh; MONO_EXEC=\"exec -a mdtool mono-sgen\"; EXE_PATH=\"/opt/monodevelop/lib/monodevelop/bin/mdtool.exe\"; $MONO_EXEC $MONO_OPTIONS \"$EXE_PATH\" \"$@\"" > %{buildroot}/usr/bin/mdtool-opt
 chmod a+x %{buildroot}/usr/bin/monodevelop-opt
+chmod a+x %{buildroot}/usr/bin/mdtool-opt
+rm %{buildroot}/usr/bin/monodevelop
+rm %{buildroot}/usr/bin/mdtool
 
 %clean
 # Clean up after ourselves, but be careful in case someone sets a bad buildroot
@@ -75,11 +88,13 @@ chmod a+x %{buildroot}/usr/bin/monodevelop-opt
 /usr/share/icons/hicolor/24x24/apps/monodevelop-opt.png
 /usr/share/icons/hicolor/32x32/apps/monodevelop-opt.png
 /usr/share/icons/hicolor/48x48/apps/monodevelop-opt.png
-/usr/share/icons/hicolor/128x128/apps/monodevelop-opt.png
 /usr/share/icons/hicolor/scalable/apps/monodevelop-opt.svg
+/usr/share/man/man1/mdtool.1.gz
+/usr/share/man/man1/monodevelop.1.gz
+/usr/share/mime/packages/monodevelop.xml
 
 %changelog
-* Wed Nov 25 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 5.10.0-0
+* Wed Nov 25 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 5.10.0-3
 - build 5.10.0.871
 * Thu Oct 08 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - build 5.9.6.23
