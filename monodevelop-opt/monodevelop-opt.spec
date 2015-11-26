@@ -17,7 +17,7 @@ BuildRequires: nunit-opt >= 2.6.3 nunit-opt-devel
 BuildRequires: cmake git
 BuildRequires: libssh2-devel
 BuildRequires: newtonsoft-json-opt
-Requires: mono-opt >= 4.2 mono-opt-devel libgdiplus pkgconfig gnome-sharp2-opt gtk-sharp2-opt mono-libgdiplus-opt mono-tools-opt
+Requires: mono-opt >= 4.2 libgdiplus pkgconfig gnome-sharp2-opt gtk-sharp2-opt mono-libgdiplus-opt mono-tools-opt
 BuildRoot: /tmp/buildroot
 Source: monodevelop-%{fileversion}.tar.bz2
 Patch:  downgrade_to_mvc3.patch
