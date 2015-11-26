@@ -82,6 +82,7 @@ rm %{buildroot}/usr/bin/mdtool
 %files
 %{MonoDevelopPath}
 /usr/bin/monodevelop-opt
+/usr/bin/mdtool-opt
 /usr/share/applications/monodevelop-opt.desktop
 /usr/share/icons/hicolor/16x16/apps/monodevelop-opt.png
 /usr/share/icons/hicolor/22x22/apps/monodevelop-opt.png
