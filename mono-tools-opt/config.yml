@@ -1,0 +1,3 @@
+lbs:
+  source:
+    download: ["/sources/mono-tools/mono-tools-3.10.tar.gz"]

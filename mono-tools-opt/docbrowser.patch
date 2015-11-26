@@ -1,0 +1,28 @@
+--- mono-tools-2.11/docbrowser/Makefile.in	2013-12-05 12:14:46.000000000 +0100
++++ mono-tools-2.11.patched/docbrowser/Makefile.in	2013-12-18 14:48:39.256090476 +0100
+@@ -313,6 +313,7 @@
+ 
+ admin_sources = \
+ 	$(srcdir)/admin.cs		\
++	$(srcdir)/editing.cs            \
+ 	$(srcdir)/Contributions.cs
+ 
+ browser_assemblies = $(GTK_SHARP_LIBS) $(MONODOC_LIBS) $(GNOME_SHARP_LIBS) -r:System.Web.Services -r:System.Web
+--- mono-tools-2.11/docbrowser/editing.cs	2013-12-05 12:11:40.000000000 +0100
++++ mono-tools-2.11.patched/docbrowser/editing.cs	2013-12-18 15:06:34.781090476 +0100
+@@ -131,6 +131,7 @@
+ 		
+ 		public static void RenderEditPreview (string url, RootTree tree, XmlNode new_node, XmlWriter w)
+ 		{
++/* disable this function because Monodoc.Providers.EcmaUncompiledHelpSource is not available anymore
+ 			string [] uSplit = ParseEditUrl (url);
+ 		
+ 			if (uSplit[0].StartsWith("monodoc:///")) {
+@@ -146,6 +147,7 @@
+ 					}
+ 				}				
+ 			}
++*/
+ 		}
+ 		
+ 		public static string [] ParseEditUrl (string url)
