@@ -5,7 +5,7 @@
 Summary: A collection of tools for mono applications
 Name: %{name}-opt
 Version: %{version}
-Release: 4.7
+Release: 2
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: MIT
 Group: Development/Tools
@@ -37,10 +37,12 @@ independantly of monodevelop
 %patch0 -p1
 #%patch1 -p1
 chmod 644 COPYING
+sed -i "s/mono-nunit/nunit/g" configure
 
 %build
 . %{MonoPath}/env.sh
 sed -i "s#gmcs#mcs#g" configure
+find . -name "*.in" -print -exec sed -i 's/mono-nunit/nunit/g' {} \;
 find . -name "*.sln" -print -exec sed -i 's/Format Version 10.00/Format Version 11.00/g' {} \;
 find . -name "*.csproj" -print -exec sed -i 's#ToolsVersion="3.5"#ToolsVersion="4.0"#g; s#<TargetFrameworkVersion>.*</TargetFrameworkVersion>##g; s#<PropertyGroup>#<PropertyGroup><TargetFrameworkVersion>v4.5</TargetFrameworkVersion>#g' {} \;
 %configure --libdir=%{MonoPath}/lib --prefix=%{MonoPath}

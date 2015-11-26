@@ -5,7 +5,7 @@
 Summary: links for libgdiplus for Mono
 Name: %{name}
 Version: %{version}
-Release: 1
+Release: 2 
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development
@@ -30,9 +30,9 @@ links for libgdiplus for Mono
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/%{MonoPath}/lib/
-if [ -f /usr/%{_lib}/libgdiplus.so.0 ]
+if [ -f /usr/lib64/libgdiplus.so.0 ]
 then
-  ln -sf ../../../usr/%{_lib}/libgdiplus.so.0 $RPM_BUILD_ROOT/%{MonoPath}/lib/libgdiplus.so
+  ln -sf ../../../usr/lib64/libgdiplus.so.0 $RPM_BUILD_ROOT/%{MonoPath}/lib/libgdiplus.so
 fi
 if [ -f /usr/local/lib/libgdiplus.so.0 ]
 then
