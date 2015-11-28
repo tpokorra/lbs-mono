@@ -6,7 +6,7 @@
 Summary: XSP built for Mono
 Name: %{name}
 Version: %{version}
-Release: 1
+Release: 2
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Productivity/Networking/Web/Utilities
@@ -17,8 +17,8 @@ BuildRequires: bison
 BuildRequires: gettext
 BuildRequires: make
 BuildRequires: bzip2
-BuildRequires: autoconf >= 2.69
-BuildRequires: automake >= 1.13
+BuildRequires: autoconf >= 2.63
+BuildRequires: automake >= 1.11
 BuildRequires: libtool
 BuildRequires: gcc-c++
 BuildRequires: patch
@@ -56,7 +56,7 @@ make DESTDIR=%{buildroot} install
 %post
 
 %changelog
-* Sat Nov 28 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2-1
+* Sat Nov 28 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2-2
 - newer version from Github
 * Fri Jun 27 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - newer version from Github
