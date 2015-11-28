@@ -1,35 +1,42 @@
 %define name mono-nant-opt
-%define version 0.92.999
+%define version 0.92
 %define MonoPath /opt/mono
-%define NantGitTimestamp 7906a4d7e903b0ee26c466fefa58d7ba730f534c
+%define GitReference 97bf572559a00fec1d65d11deb3167b7ce6062e4
 
 Summary: some development tools for Mono
 Name: %{name}
 Version: %{version}
-Release: %{release}
+Release: 7 
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development
-Requires: pkgconfig mono-opt mono-opt-devel libgdiplus mono-libgdiplus-opt liberation-mono-fonts
-BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch mono-opt mono-opt-devel pkgconfig
+Requires: pkgconfig mono-opt libgdiplus mono-libgdiplus-opt liberation-mono-fonts
+BuildRequires: gcc libtool bison gettext make bzip2 automake gcc-c++ patch mono-opt pkgconfig
+%if 0%{?suse_version}
+Requires: mono-opt-devel
+BuildRequires: mono-opt-devel
+%endif
 BuildRoot: /tmp/buildroot
-Source: %{NantGitTimestamp}.tar.gz
+Source: %{GitReference}.tar.gz
 
 %description
 some development tools for Mono
 
 %prep
 [ -d $RPM_BUILD_ROOT ] && [ "/" != "$RPM_BUILD_ROOT" ] && rm -rf $RPM_BUILD_ROOT
-%setup  -q -n nant-%{NantGitTimestamp}
+%setup  -q -n nant-%{GitReference}
 
 %build
 # Configure and make source
-. %{MonoPath}/env.sh
+. /opt/mono/env.sh
+sed -i "s#gmcs#mcs#g" Makefile
+find . -name "*.sln" -print -exec sed -i 's/Format Version 10.00/Format Version 11.00/g' {} \;
+find . -name "*.csproj" -print -exec sed -i 's#ToolsVersion="3.5"#ToolsVersion="4.0"#g; s#<TargetFrameworkVersion>.*</TargetFrameworkVersion>##g; s#<PropertyGroup>#<PropertyGroup><TargetFrameworkVersion>v4.5</TargetFrameworkVersion>#g' {} \;
 make prefix=%{MonoPath}
 
 %install
 rm -rf %{buildroot}
-. %{MonoPath}/env.sh
+. /opt/mono/env.sh
 make DESTDIR=%{buildroot} install prefix=%{MonoPath}
 sed -i 's#/bin/mono#/bin/mono --runtime=v4.0#g' %{buildroot}%{MonoPath}/bin/nant
 
@@ -43,10 +50,7 @@ sed -i 's#/bin/mono#/bin/mono --runtime=v4.0#g' %{buildroot}%{MonoPath}/bin/nant
 %post
 
 %changelog
-* Thu Jun 19 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
-- upgrade to latest version from Github Nant
 * Thu Jul 11 2013 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
-- using separate package mono-opt-libgdiplus
+- using separate package mono-libgdiplus-opt
 * Sat Jun 01 2013 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - First build
-
