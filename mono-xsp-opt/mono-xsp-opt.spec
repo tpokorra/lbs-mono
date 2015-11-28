@@ -1,17 +1,30 @@
 %define name mono-xsp-opt
-%define version 3.0.99
+%define version 4.2
 %define MonoPath /opt/mono
-%define XSPGitReference 8a31bc625727594d42f94173768bee5cf8afd0a4
+%define XSPGitReference e272a2c006211b6b03be2ef5bbb9e3f8fefd0768
 
 Summary: XSP built for Mono
 Name: %{name}
 Version: %{version}
-Release: %{release}
+Release: 1
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Productivity/Networking/Web/Utilities
-Requires: pkgconfig mono-opt mono-opt-devel
-BuildRequires: gcc libtool bison gettext make bzip2 autoconf automake libtool gcc-c++ patch mono-opt mono-opt-devel pkgconfig sqlite which
+Requires: pkgconfig mono-opt mono-opt
+BuildRequires: gcc
+BuildRequires: libtool
+BuildRequires: bison
+BuildRequires: gettext
+BuildRequires: make
+BuildRequires: bzip2
+BuildRequires: autoconf >= 2.69
+BuildRequires: automake >= 1.13
+BuildRequires: libtool
+BuildRequires: gcc-c++
+BuildRequires: patch
+BuildRequires: mono-opt
+BuildRequires: pkgconfig
+BuildRequires: sqlite >= 3.5
 BuildRoot: /tmp/buildroot
 Source: %{XSPGitReference}.tar.gz
 
@@ -43,6 +56,8 @@ make DESTDIR=%{buildroot} install
 %post
 
 %changelog
+* Sat Nov 28 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2-1
+- newer version from Github
 * Fri Jun 27 2014 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - newer version from Github
 * Fri Aug 02 2013 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>

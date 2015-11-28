@@ -5,7 +5,7 @@
 Summary: sqlite
 Name: %{name}
 Version: %{version}
-Release: %{release}
+Release: 1
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 Group: None
 License: GPL

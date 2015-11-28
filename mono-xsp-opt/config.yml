@@ -1,4 +1,3 @@
 lbs:
   source:
-    # https://github.com/mono/xsp/commit/8a31bc625727594d42f94173768bee5cf8afd0a4 December 2013
-    download: ["https://github.com/mono/xsp/archive/8a31bc625727594d42f94173768bee5cf8afd0a4.tar.gz"]
+    download: ["https://github.com/mono/xsp/archive/e272a2c006211b6b03be2ef5bbb9e3f8fefd0768.tar.gz"]
