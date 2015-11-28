@@ -1,0 +1,3 @@
+lbs:
+  source:
+    download: ["http://download.mono-project.com/sources/mono-basic/mono-basic-4.0.1.tar.bz2"]
