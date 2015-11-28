@@ -8,7 +8,7 @@
 Summary: MonoDevelop
 Name: %{name}
 Version: %{version}
-Release: 4 
+Release: 7 
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: none
@@ -68,7 +68,7 @@ sed -i 's/Exec=monodevelop/Exec=monodevelop-opt/g' %{buildroot}/usr/share/applic
 sed -i 's/Name=MonoDevelop/Name=MonoDevelop %{version}/g' %{buildroot}/usr/share/applications/monodevelop-opt.desktop
 sed -i 's/Icon=monodevelop/Icon=monodevelop-opt/g' %{buildroot}/usr/share/applications/monodevelop-opt.desktop
 mkdir -p %{buildroot}/usr/bin
-echo ". /opt/mono/env.sh; exec /opt/monodevelop/bin/monodevelop \"$@\"" > %{buildroot}/usr/bin/monodevelop-opt
+echo ". /opt/mono/env.sh; exec mono /opt/monodevelop/lib/monodevelop/bin/MonoDevelop.exe \"\$@\"" > %{buildroot}/usr/bin/monodevelop-opt
 echo ". /opt/mono/env.sh; MONO_EXEC=\"exec -a mdtool mono-sgen\"; EXE_PATH=\"/opt/monodevelop/lib/monodevelop/bin/mdtool.exe\"; $MONO_EXEC $MONO_OPTIONS \"$EXE_PATH\" \"$@\"" > %{buildroot}/usr/bin/mdtool-opt
 chmod a+x %{buildroot}/usr/bin/monodevelop-opt
 chmod a+x %{buildroot}/usr/bin/mdtool-opt
@@ -95,7 +95,7 @@ rm %{buildroot}/usr/bin/mdtool
 /usr/share/mime/packages/monodevelop.xml
 
 %changelog
-* Wed Nov 25 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 5.10.0-4
+* Wed Nov 25 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 5.10.0-7
 - build 5.10.0.871
 * Thu Oct 08 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - build 5.9.6.23
