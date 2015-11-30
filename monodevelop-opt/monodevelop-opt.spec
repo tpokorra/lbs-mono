@@ -8,7 +8,7 @@
 Summary: MonoDevelop
 Name: %{name}
 Version: %{version}
-Release: 7 
+Release: 8
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: none
@@ -22,6 +22,7 @@ BuildRoot: /tmp/buildroot
 Source: monodevelop-%{fileversion}.tar.bz2
 Patch:  downgrade_to_mvc3.patch
 Patch1: monodevelop-5.10-no_nuget_packages.patch
+Patch2: monodevelop-nuget-unbundle.patch
 
 %description
 MonoDevelop
@@ -31,6 +32,7 @@ MonoDevelop
 %setup -q -n monodevelop-%{tarballpath}
 %patch -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 # Configure and make source
@@ -95,7 +97,7 @@ rm %{buildroot}/usr/bin/mdtool
 /usr/share/mime/packages/monodevelop.xml
 
 %changelog
-* Wed Nov 25 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 5.10.0-7
+* Wed Nov 25 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 5.10.0-8
 - build 5.10.0.871
 * Thu Oct 08 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - build 5.9.6.23
