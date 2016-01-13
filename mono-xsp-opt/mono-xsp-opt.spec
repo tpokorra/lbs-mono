@@ -25,6 +25,8 @@ BuildRequires: patch
 BuildRequires: mono-opt
 BuildRequires: pkgconfig
 BuildRequires: sqlite >= 3.5
+# which is needed to determine the version of aclocal
+BuildRequires: which
 BuildRoot: /tmp/buildroot
 Source: %{XSPGitReference}.tar.gz
 
