@@ -6,7 +6,7 @@
 Summary: Mono
 Name: %{name}
 Version: %{version}
-Release: 1
+Release: 2
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development/Languages/Mono
@@ -131,7 +131,7 @@ rm -f %{buildroot}%{_libdir}/pkgconfig/mono-nunit.pc
 %endif
 
 %changelog
-* Sat Feb 13 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.2-1
+* Sat Feb 13 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.2-2
 - update to Mono 4.2.2 Cycle 6 Service Release 1
 * Mon Nov 23 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 4.2.1.102 aka Cycle 6 Final
