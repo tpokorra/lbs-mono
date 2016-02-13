@@ -1,6 +1,6 @@
 %define name mono-opt
-%define version 4.2.1
-%define fileversion 4.2.1.102
+%define version 4.2.2
+%define fileversion 4.2.2.30
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -25,6 +25,8 @@ Requires: timezone
 BuildRoot: /tmp/buildroot
 Source: mono-%{fileversion}.tar.bz2
 Source1: env.sh
+Patch0: mono-4.0.0-libgdiplusconfig.patch
+Patch1: mono-4.2.2-asmx.patch
 
 %description
 Mono
@@ -42,6 +44,8 @@ Development files for Mono
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n mono-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 
@@ -117,6 +121,8 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 %endif
 
 %changelog
+* Sat Feb 13 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.2-1
+- update to Mono 4.2.2 Cycle 6 Service Release 1
 * Tue Nov 24 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.1-1
 - update to Mono 4.2
 * Thu Oct 08 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
@@ -149,7 +155,7 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 - including a patch so that mono-tools build
 * Mon Dec 02 2013 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 3.2.5
-* Wed Sep 26 2013 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+* Thu Sep 26 2013 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 3.2.3
 * Wed Aug 14 2013 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 3.2.1
