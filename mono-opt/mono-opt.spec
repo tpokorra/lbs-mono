@@ -20,6 +20,8 @@ BuildRequires: gcc >= 4.7 gcc-c++ libtool
 %if 0%{?suse_version}
 BuildRequires: timezone
 Requires: timezone
+%else
+Obsoletes: mono-opt-devel
 %endif
 
 BuildRoot: /tmp/buildroot
@@ -95,6 +97,14 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.OS2
 rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.Mac
 rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 
+# remove the mono-nunit files
+rm -f %{buildroot}%{_bindir}/nunit-console
+rm -f %{buildroot}%{_bindir}/nunit-console2
+rm -f %{buildroot}%{_bindir}/nunit-console4
+rm -f %{buildroot}%{_monodir}/4.5/nunit*
+rm -Rf %{buildroot}%{_monodir}/gac/nunit*
+rm -f %{buildroot}%{_libdir}/pkgconfig/mono-nunit.pc
+
 %clean
 # Clean up after ourselves, but be careful in case someone sets a bad buildroot
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
@@ -123,16 +133,24 @@ rm -f %{buildroot}/%{MonoPath}/share/libgc-mono/README.win32
 %changelog
 * Sat Feb 13 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.2-1
 - update to Mono 4.2.2 Cycle 6 Service Release 1
-* Tue Nov 24 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.1-1
-- update to Mono 4.2
+* Mon Nov 23 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 4.2.1.102 aka Cycle 6 Final
 * Thu Oct 08 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
-- Building Mono 4.0.4.1
+- Building Mono 4.0.4.1 aka Cycle 5 Service Release 4
+* Tue Aug 04 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- obsoletes mono-opt-devel for all but OpenSUSE
 * Mon Jul 13 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
-- Do not build extra package mono-opt-devel, apart from OpenSUSE
-* Thu Jul 2 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
-- Building Mono 4.0.2.5
-* Wed Jun 10 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
-- Building Mono 4.0.1.44
+- only create a mono-opt-devel package for OpenSUSE, but for other Distributions: create one package mono-opt
+* Thu Jul 02 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 4.0.2.5 aka 4.0.2 SR2
+* Wed Jun 03 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 4.0.1.44 aka 4.0.1 SR1
+* Wed May 13 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 4.0.1.28
+* Mon Apr 27 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Building Mono 4.0.1
+* Fri Apr 24 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+- Drop the mono-nunit 2.4.8, we have now a separate package nunit-opt with 2.6.3
 * Sat Mar 07 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 - Building Mono 3.12.1
 * Tue Jan 13 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>

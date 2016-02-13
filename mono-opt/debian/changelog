@@ -1,3 +1,31 @@
+mono-opt (4.2.2.30) unstable; urgency=low
+  * release with Mono 4.2.2.30, aka Cycle6 Service Release 1
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Sat, 13 Feb 2016 13:33:18 +0400
+
+mono-opt (4.2.1.102) unstable; urgency=low
+  * release with Mono 4.2.1.102, aka Cycle6 Final
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Mon, 23 Nov 2015 13:33:18 +0400
+
+mono-opt (4.0.4.1) unstable; urgency=low
+  * release with Mono 4.0.4.1, aka Cycle5 Service Release 4
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Thu, 08 Oct 2015 13:33:18 +0400
+
+mono-opt (4.0.2.5) unstable; urgency=low
+  * release with Mono 4.0.2.5, aka 4.0.2 SR2
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Thu, 02 Jul 2015 13:33:18 +0400
+
+mono-opt (4.0.1.44) unstable; urgency=low
+  * release with Mono 4.0.1.44, aka 4.0.1 SR1
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Wed, 03 Jun 2015 13:33:18 +0400
+
+mono-opt (4.0.1.28) unstable; urgency=low
+  * release with Mono 4.0.1.28
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Wed, 13 May 2015 13:33:18 +0400
+
+mono-opt (4.0.1) unstable; urgency=low
+  * release with Mono 4.0.1
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Mon, 27 Apr 2015 13:33:18 +0400
+
 mono-opt (3.12.1) unstable; urgency=low
   * release with Mono 3.12.1
  -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Sat, 07 Mar 2015 13:33:18 +0400

@@ -19,6 +19,7 @@ build-stamp:
 
 	# Add here commands to compile the package.
 	./configure --prefix=/opt/mono --enable-llvm --with-llvm=/opt/mono
+	sed -i "s#mono/2.0#mono/4.5#g" data/mono-nunit.pc.in
 	make
 	rm -Rf /tmp/buildroot
 	mkdir /tmp/buildroot
@@ -59,6 +60,13 @@ install: build
 	ln -sf ../../../gac/Microsoft.Build.Engine/12.0.0.0__b03f5f7f11d50a3a/Microsoft.Build.Engine.dll; \
 	ln -sf ../../../gac/Microsoft.Build.Utilities.v12.0/12.0.0.0__b03f5f7f11d50a3a/Microsoft.Build.Utilities.v12.0.dll; \
 	cd -
+	# remove the mono-nunit files
+	rm -f $(CURDIR)/debian/mono-opt/opt/mono/bin/nunit-console
+	rm -f $(CURDIR)/debian/mono-opt/opt/mono/bin/nunit-console2
+	rm -f $(CURDIR)/debian/mono-opt/opt/mono/bin/nunit-console4
+	rm -f $(CURDIR)/debian/mono-opt/opt/mono/lib/mono/4.5/nunit*
+	rm -Rf $(CURDIR)/debian/mono-opt/opt/mono/lib/mono/gac/nunit*
+	rm -f $(CURDIR)/debian/mono-opt/opt/mono/lib/pkgconfig/mono-nunit.pc
 
 # Build architecture-independent files here.
 binary-indep: build install
