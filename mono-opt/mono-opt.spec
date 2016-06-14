@@ -1,12 +1,12 @@
 %define name mono-opt
-%define version 4.2.2
-%define fileversion 4.2.2.30
+%define version 4.4.0
+%define fileversion 4.4.0.182
 %define MonoPath /opt/mono
 
 Summary: Mono
 Name: %{name}
 Version: %{version}
-Release: 2
+Release: 1
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development/Languages/Mono
@@ -28,7 +28,6 @@ BuildRoot: /tmp/buildroot
 Source: mono-%{fileversion}.tar.bz2
 Source1: env.sh
 Patch0: mono-4.0.0-libgdiplusconfig.patch
-Patch1: mono-4.2.2-asmx.patch
 
 %description
 Mono
@@ -47,7 +46,6 @@ Development files for Mono
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n mono-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 
@@ -131,6 +129,8 @@ rm -f %{buildroot}%{_libdir}/pkgconfig/mono-nunit.pc
 %endif
 
 %changelog
+* Tue Jun 14 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.4.0-1
+- update to Mono 4.4.0.182, Cycel 7 Final
 * Sat Feb 13 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.2-2
 - update to Mono 4.2.2 Cycle 6 Service Release 1
 * Mon Nov 23 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>

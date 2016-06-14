@@ -1,6 +1,6 @@
 Format: 1.0
 Source: mono-opt
-Version: 4.2.2.30
+Version: 4.4.0.182
 Binary: mono-opt
 Maintainer: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 Architecture: any

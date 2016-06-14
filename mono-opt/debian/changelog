@@ -1,3 +1,7 @@
+mono-opt (4.4.0.182) unstable; urgency=low
+  * release with Mono 4.4.0.182, aka Cycle7 Final
+ -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Tue, 14 Jun 2016 13:33:18 +0400
+
 mono-opt (4.2.2.30) unstable; urgency=low
   * release with Mono 4.2.2.30, aka Cycle6 Service Release 1
  -- Timotheus Pokorra <timotheus.pokorra@solidcharity.com>  Sat, 13 Feb 2016 13:33:18 +0400
