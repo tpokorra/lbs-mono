@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# because of bug https://bugzilla.xamarin.com/show_bug.cgi?id=39191
+# "execvp: /bin/sh: Argument list too long"
+# we cannot build on Fedora, I tried with Rawhide in June 2016 (future F25)
+# need to build on Ubuntu 14.04
+
 function buildTarBallFromTag {
   tag=$1
   version=$2
@@ -30,14 +35,23 @@ function buildTarBallFromTag {
 
 mkdir ~/sources
 
-dnf install -y 'dnf-command(config-manager)'
-dnf config-manager --add-repo http://download.mono-project.com/repo/centos/
-rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
+if [ -f /etc/redhat-release ]
+then
+  dnf install -y 'dnf-command(config-manager)'
+  dnf config-manager --add-repo http://download.mono-project.com/repo/centos/
+  rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
 
-dnf install -y git-core make cmake automake autoconf libtool tar which gcc-c++ gettext bzip2 wget \
+  dnf install -y git-core make cmake automake autoconf libtool tar which gcc-c++ gettext bzip2 wget \
                automake autoconf libtool mono-core mono-devel libgdiplus pkgconfig \
                shared-mime-info intltool gtk-sharp2-devel gnome-sharp-devel fsharp monodoc-devel \
                libssh2-devel
+else
+  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+  echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
+  apt-get update
+  apt-get install mono-complete mono-devel cmake git tar which gtk-sharp2-dev gnome-sharp-dev fsharp monodoc-devel \
+               libssh2-dev
+fi
 
 #buildTarBallFromTag monodevelop-5.6.3.3 5.6.3 5.6.3.3
 buildTarBallFromTag monodevelop-6.0.0.5174 6.0 6.0.0.5174
