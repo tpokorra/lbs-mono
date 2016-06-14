@@ -39,7 +39,7 @@ cd -
 yum install -y automake autoconf libtool mono-opt mono-opt-devel libgdiplus pkgconfig shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt
 
 #buildTarBallFromTag monodevelop-5.6.3.3 5.6.3 5.6.3.3
-buildTarBallFromTag monodevelop-5.9.0.431 5.9 5.9.0.431
+buildTarBallFromTag monodevelop-6.0.0.5174 6.0 6.0.0.5174
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
