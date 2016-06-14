@@ -5,12 +5,12 @@ function buildTarBallFromTag {
   version=$2
   fileversion=$3
   branch=$tag
-  git clone https://github.com/mono/monodevelop.git $branch
+  git clone --depth 1 https://github.com/mono/monodevelop.git $branch
   cd $branch
   git branch release $branch
   git checkout release
-  . /opt/mono/env.sh
-  ./configure --profile=stable
+
+  ./configure --profile=stable || exit 1
 
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
   make dist
@@ -30,13 +30,9 @@ function buildTarBallFromTag {
 
 mkdir ~/sources
 
-yum install -y git-core make automake autoconf libtool tar which gcc-c++ gettext bzip2 wget
-
-cd /etc/yum.repos.d/
-wget http://download.opensuse.org/repositories/home:tpokorra:mono/Fedora_21/home:tpokorra:mono.repo
-cd -
-
-yum install -y automake autoconf libtool mono-opt mono-opt-devel libgdiplus pkgconfig shared-mime-info intltool gtk-sharp2-opt gnome-sharp2-opt
+dnf install -y git-core make automake autoconf libtool tar which gcc-c++ gettext bzip2 wget \
+               automake autoconf libtool mono-core mono-devel libgdiplus pkgconfig \
+               shared-mime-info intltool gtk-sharp2-devel gnome-sharp-devel
 
 #buildTarBallFromTag monodevelop-5.6.3.3 5.6.3 5.6.3.3
 buildTarBallFromTag monodevelop-6.0.0.5174 6.0 6.0.0.5174
