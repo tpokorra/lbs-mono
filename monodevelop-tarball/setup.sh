@@ -30,9 +30,14 @@ function buildTarBallFromTag {
 
 mkdir ~/sources
 
-dnf install -y git-core make automake autoconf libtool tar which gcc-c++ gettext bzip2 wget \
+dnf install -y 'dnf-command(config-manager)'
+dnf config-manager --add-repo http://download.mono-project.com/repo/centos/
+rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
+
+dnf install -y git-core make cmake automake autoconf libtool tar which gcc-c++ gettext bzip2 wget \
                automake autoconf libtool mono-core mono-devel libgdiplus pkgconfig \
-               shared-mime-info intltool gtk-sharp2-devel gnome-sharp-devel
+               shared-mime-info intltool gtk-sharp2-devel gnome-sharp-devel fsharp monodoc-devel \
+               libssh2-devel
 
 #buildTarBallFromTag monodevelop-5.6.3.3 5.6.3 5.6.3.3
 buildTarBallFromTag monodevelop-6.0.0.5174 6.0 6.0.0.5174
