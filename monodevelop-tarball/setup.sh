@@ -15,6 +15,10 @@ function buildTarBallFromTag {
   git branch release $branch
   git checkout release
 
+  # somehow the version in version.config is already one ahead???
+  sed -i "s#^Version=.*#Version=$version#" version.config
+  sed -i "s#^Label=.*#Label=$version#" version.config
+
   ./configure --profile=stable || exit 1
 
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
