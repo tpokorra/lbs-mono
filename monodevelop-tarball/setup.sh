@@ -18,6 +18,7 @@ function buildTarBallFromTag {
   # somehow the version in version.config is already one ahead???
   sed -i "s#^Version=.*#Version=$version#" version.config
   sed -i "s#^Label=.*#Label=$version#" version.config
+  git commit version.config -m "setting version.config to $version"
 
   ./configure --profile=stable || exit 1
 
