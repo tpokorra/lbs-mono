@@ -22,7 +22,7 @@ function buildTarBallFromTag {
   ./configure --profile=stable || exit 1
 
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
-  make dist
+  make dist || exit 1
   cd ..
   if [ "`ls monodevelop-opt*.spec`" != "" ];
   then
@@ -58,7 +58,7 @@ else
 fi
 
 #buildTarBallFromTag monodevelop-5.6.3.3 5.6.3 5.6.3.3
-buildTarBallFromTag monodevelop-6.0.0.5174 6.0 6.0.0.5174
+buildTarBallFromTag monodevelop-6.0.1.8 6.0 6.0.1.8
 
 # tell the LBS that the calling python script can continue
 echo "LBSScriptFinished"
