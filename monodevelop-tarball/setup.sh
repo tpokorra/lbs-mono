@@ -20,6 +20,9 @@ function buildTarBallFromTag {
   sed -i "s#^Label=.*#Label=$version#" version.config
   git commit version.config -m "setting version.config to $version"
 
+  # let the distribution decide if they want to use external dlls and exes or not
+  patch -p1 < ../notdeletingdlls.patch
+
   ./configure --profile=stable || exit 1
 
   # this does not seem to work for CentOS: error: possibly undefined macro: m4_esyscmd_s
