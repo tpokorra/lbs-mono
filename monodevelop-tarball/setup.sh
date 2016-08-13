@@ -22,6 +22,8 @@ function buildTarBallFromTag {
 
   # let the distribution decide if they want to use external dlls and exes or not
   patch -p1 < ../notdeletingdlls.patch
+  # download the nuget packages
+  patch -p1 < ../downloadnugetpackages.patch
 
   ./configure --profile=stable || exit 1
 
@@ -58,7 +60,7 @@ else
   echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
   apt-get update
   apt-get -y install git cmake automake autoconf tar intltool \
-          mono-complete mono-devel fsharp gnome-sharp2 gtk-sharp2 libssh2-1-dev
+          mono-complete mono-devel fsharp gnome-sharp2 gtk-sharp2 libssh2-1-dev nuget
 fi
 
 #buildTarBallFromTag monodevelop-5.6.3.3 5.6.3 5.6.3.3
