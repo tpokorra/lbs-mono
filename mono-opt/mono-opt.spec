@@ -1,6 +1,6 @@
 %define name mono-opt
-%define version 4.4.0
-%define fileversion 4.4.0.182
+%define version 4.4.2
+%define fileversion 4.4.2.11
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -129,6 +129,8 @@ rm -f %{buildroot}%{_libdir}/pkgconfig/mono-nunit.pc
 %endif
 
 %changelog
+* Mon Aug 15 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.4.2-1
+- update to Mono 4.4.2.11, Cycel 7 Service Release 1
 * Tue Jun 14 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.4.0-1
 - update to Mono 4.4.0.182, Cycel 7 Final
 * Sat Feb 13 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.2-2
