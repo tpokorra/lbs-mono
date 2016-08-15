@@ -10,10 +10,9 @@ function buildTarBallFromTag {
   version=$2
   fileversion=$3
   branch=$tag
-  git clone --depth 1 https://github.com/mono/monodevelop.git $branch
+  git clone --depth 1 https://github.com/mono/monodevelop.git -b $branch $branch || exit 1
   cd $branch
-  git branch release $branch
-  git checkout release
+  git checkout -b release || exit 1
 
   # somehow the version in version.config is already one ahead???
   sed -i "s#^Version=.*#Version=$version#" version.config
@@ -21,9 +20,9 @@ function buildTarBallFromTag {
   git commit version.config -m "setting version.config to $version"
 
   # let the distribution decide if they want to use external dlls and exes or not
-  patch -p1 < ../notdeletingdlls.patch
+  patch -p1 < ../notdeletingdlls.patch || exit 1
   # download the nuget packages
-  patch -p1 < ../downloadnugetpackages.patch
+  patch -p1 < ../downloadnugetpackages.patch || exit 1
 
   ./configure --profile=stable || exit 1
 
@@ -43,7 +42,7 @@ function buildTarBallFromTag {
   echo "download at https://download.solidcharity.com/tarballs/tpokorra/mono/monodevelop-$fileversion.tar.bz2"
 }
 
-mkdir ~/sources
+mkdir -p ~/sources
 
 if [ -f /etc/redhat-release ]
 then

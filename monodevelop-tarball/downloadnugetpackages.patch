@@ -1,0 +1,12 @@
+--- a/Makefile	2016-08-13 23:10:23.870705576 +0200
++++ b/Makefile	2016-08-13 23:10:57.655967845 +0200
+@@ -96,6 +96,8 @@
+ 	#	-name \*.dll -o \
+ 	#	-name \*.mdb \) \
+ 	#	-delete
++	# get the nuget packages
++	@p=`pwd`/tarballs/monodevelop-$(PACKAGE_VERSION)/packages; for f in `find . -name packages.config -type f`; do cd `dirname $$f`; nuget restore -PackagesDirectory $$p; cd -; done
+ 	@cd tarballs && tar -cjf monodevelop-$(PACKAGE_VERSION).tar.bz2 monodevelop-$(PACKAGE_VERSION)
+ 	@cd tarballs && rm -rf monodevelop-$(PACKAGE_VERSION)
+ 
+
