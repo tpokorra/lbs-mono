@@ -1,6 +1,6 @@
 %define name mono-opt
-%define version 4.4.2
-%define fileversion 4.4.2.11
+%define version 4.6.0
+%define fileversion 4.6.0.245
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -27,7 +27,8 @@ Obsoletes: mono-opt-devel
 BuildRoot: /tmp/buildroot
 Source: mono-%{fileversion}.tar.bz2
 Source1: env.sh
-Patch0: mono-4.0.0-libgdiplusconfig.patch
+Patch3:         mono-4.2-fix-winforms-trayicon.patch
+Patch5:         mono-4.6.0-fix_gacutil.patch
 
 %description
 Mono
@@ -45,7 +46,8 @@ Development files for Mono
 %prep
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n mono-%{version}
-%patch0 -p1
+%patch3 -p1
+%patch5 -p1
 
 %build
 
@@ -103,6 +105,9 @@ rm -f %{buildroot}%{_monodir}/4.5/nunit*
 rm -Rf %{buildroot}%{_monodir}/gac/nunit*
 rm -f %{buildroot}%{_libdir}/pkgconfig/mono-nunit.pc
 
+# do not make cecil publicly available. other packages should use the mono-cecil package instead
+rm -f %{buildroot}%{_libdir}/pkgconfig/cecil.pc
+
 %clean
 # Clean up after ourselves, but be careful in case someone sets a bad buildroot
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
@@ -129,6 +134,8 @@ rm -f %{buildroot}%{_libdir}/pkgconfig/mono-nunit.pc
 %endif
 
 %changelog
+* Sat Sep 24 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.6.0-1
+- update to Mono 4.6.0.245, Cycel 8 Stable
 * Mon Aug 15 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.4.2-1
 - update to Mono 4.4.2.11, Cycel 7 Service Release 1
 * Tue Jun 14 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.4.0-1
