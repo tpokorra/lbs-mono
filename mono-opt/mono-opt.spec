@@ -6,7 +6,7 @@
 Summary: Mono
 Name: %{name}
 Version: %{version}
-Release: 1
+Release: 2
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development/Languages/Mono
@@ -61,6 +61,13 @@ CXX=/opt/rh/devtoolset-2/root/usr/bin/c++
 
 # Configure and make source
 ./configure --prefix=%{MonoPath} --enable-llvm --with-llvm=%{MonoPath}
+
+%if 0%{?rhel} < 6
+# to avoid error on CentOS5, in mono/utils:
+# mono-proclib.c:746:4: error: implicit declaration of function ‘CPU_COUNT’ [-Werror=implicit-function-declaration]
+sed -i "s/#define HAVE_SCHED_GETAFFINITY 1/#undef HAVE_SCHED_GETAFFINITY/g" config.h
+%endif
+
 make
 
 %install
@@ -134,12 +141,14 @@ rm -f %{buildroot}%{_libdir}/pkgconfig/cecil.pc
 %endif
 
 %changelog
+* Sat Sep 24 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.6.0-2
+- fix for CentOS5, CPU_COUNT
 * Sat Sep 24 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.6.0-1
-- update to Mono 4.6.0.245, Cycel 8 Stable
+- update to Mono 4.6.0.245, Cycle 8 Stable
 * Mon Aug 15 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.4.2-1
-- update to Mono 4.4.2.11, Cycel 7 Service Release 1
+- update to Mono 4.4.2.11, Cycle 7 Service Release 1
 * Tue Jun 14 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.4.0-1
-- update to Mono 4.4.0.182, Cycel 7 Final
+- update to Mono 4.4.0.182, Cycle 7 Final
 * Sat Feb 13 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.2-2
 - update to Mono 4.2.2 Cycle 6 Service Release 1
 * Mon Nov 23 2015 Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
