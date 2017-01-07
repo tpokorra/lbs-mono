@@ -1,12 +1,12 @@
 %define name mono-opt
-%define version 4.6.0
-%define fileversion 4.6.0.245
+%define version 4.6.2
+%define fileversion 4.6.2.16
 %define MonoPath /opt/mono
 
 Summary: Mono
 Name: %{name}
 Version: %{version}
-Release: 2
+Release: 1
 Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development/Languages/Mono
@@ -28,7 +28,6 @@ BuildRoot: /tmp/buildroot
 Source: mono-%{fileversion}.tar.bz2
 Source1: env.sh
 Patch3:         mono-4.2-fix-winforms-trayicon.patch
-Patch5:         mono-4.6.0-fix_gacutil.patch
 
 %description
 Mono
@@ -47,7 +46,6 @@ Development files for Mono
 [ -d %{buildroot} ] && [ "/" != "%{buildroot}" ] && rm -rf %{buildroot}
 %setup -q -n mono-%{version}
 %patch3 -p1
-%patch5 -p1
 
 %build
 
@@ -141,6 +139,8 @@ rm -f %{buildroot}%{_libdir}/pkgconfig/cecil.pc
 %endif
 
 %changelog
+* Sat Jan 07 2017 Timotheus Pokorra <tp@tbits.net> - 4.6.2-1
+- update to Mono 4.6.2.16, Cycle 8 Service Release 2
 * Sat Sep 24 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.6.0-2
 - fix for CentOS5, CPU_COUNT
 * Sat Sep 24 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.6.0-1
