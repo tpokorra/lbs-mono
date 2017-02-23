@@ -1,6 +1,6 @@
 %define name mono-opt
-%define version 4.6.2
-%define fileversion 4.6.2.16
+%define version 4.8.0
+%define fileversion 4.8.0.495
 %define MonoPath /opt/mono
 
 Summary: Mono
@@ -11,6 +11,7 @@ Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
 License: GPL
 Group: Development/Languages/Mono
 BuildRequires: bison gettext make bzip2 automake patch dos2unix libgdiplus mono-llvm-opt mono-llvm-opt-devel
+BuildRequires: cmake
 %if 0%{?rhel} < 7
 # need newer gcc version
 BuildRequires: devtoolset-2-gcc >= 4.7 devtoolset-2-gcc-c++ devtoolset-2-binutils
@@ -139,6 +140,8 @@ rm -f %{buildroot}%{_libdir}/pkgconfig/cecil.pc
 %endif
 
 %changelog
+* Thu Feb 23 2017 Timotheus Pokorra <tp@tbits.net> - 4.8.0-1
+- update to Mono 4.8.0.495, Cycle 9 Stable
 * Sat Jan 07 2017 Timotheus Pokorra <tp@tbits.net> - 4.6.2-1
 - update to Mono 4.6.2.16, Cycle 8 Service Release 2
 * Sat Sep 24 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.6.0-2
