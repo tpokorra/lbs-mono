@@ -40,6 +40,21 @@ function buildTarBallFromTag {
 
   echo "DONE with building the tarball for " $branch
   echo "download at https://download.solidcharity.com/tarballs/tpokorra/mono/monodevelop-$fileversion.tar.bz2"
+
+  # now create archives for some nuget binary packages
+  p=`pwd`/$branch/packages
+  cd $branch/main/src/core/MonoDevelop.Core
+  mono ../../../external/nuget-binary/nuget.exe restore -PackagesDirectory $p
+  cd -
+  cd $branch/main
+  find packages -name '*.nupkg' -exec rm -f {} \;
+  find packages -name 'portable-net45+win8' -exec rm -Rf {} \;
+  find packages -name 'netstandard1.3' -exec rm -Rf {} \;
+  tar czf ~/tarball/Microsoft.CodeAnalysis.1.3.2.tar.gz packages/Microsoft.CodeAnalysis.*.1.3.2
+  tar czf ~/tarball/Microsoft.Composition.1.0.27.tar.gz packages/Microsoft.Composition.1.0.27
+  tar czf ~/tarball/Newtonsoft.Json.8.0.3.tar.gz packages/Newtonsoft.Json.8.0.3
+  tar czf ~/tarball/System.Collections.Immutable.1.1.37.tar.gz packages/System.Collections.Immutable.1.1.37
+  cd -
 }
 
 mkdir -p ~/sources
