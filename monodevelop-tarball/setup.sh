@@ -20,9 +20,9 @@ function buildTarBallFromTag {
   git commit version.config -m "setting version.config to $version"
 
   # let the distribution decide if they want to use external dlls and exes or not
-  patch -p1 < ../notdeletingdlls.patch || exit 1
+  #patch -p1 < ../notdeletingdlls.patch || exit 1
   # download the nuget packages
-  patch -p1 < ../downloadnugetpackages.patch || exit 1
+  #patch -p1 < ../downloadnugetpackages.patch || exit 1
 
   ./configure --profile=stable || exit 1
 
