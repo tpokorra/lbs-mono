@@ -1,13 +1,12 @@
 %define name mono-xsp-opt
-%define version 4.0.1
+%define version 4.4
 %define MonoPath /opt/mono
-%define XSPGitCommit e272a2c006211b6b03be2ef5bbb9e3f8fefd0768
 
 Summary: XSP built for Mono
 Name: %{name}
 Version: %{version}
 Release: 1
-Packager: Timotheus Pokorra <timotheus.pokorra@solidcharity.com>
+Packager: Timotheus Pokorra <tp@tbits.net>
 License: GPL
 Group: Productivity/Networking/Web/Utilities
 Requires: pkgconfig mono-opt
@@ -17,14 +16,14 @@ Requires: mono-opt-devel
 BuildRequires: mono-opt-devel
 %endif
 BuildRoot: /tmp/buildroot
-Source: %{XSPGitCommit}.tar.gz
+Source: https://github.com/mono/xsp/archive/%{version}.tar.gz
 
 %description
 XSP built for Mono
 
 %prep
 [ -d $RPM_BUILD_ROOT ] && [ "/" != "$RPM_BUILD_ROOT" ] && rm -rf $RPM_BUILD_ROOT
-%setup -q -n xsp-%{XSPGitCommit}
+%setup -q -n xsp-%{version}
 
 %build
 # Configure and make source
