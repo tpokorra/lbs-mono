@@ -78,7 +78,7 @@ else
   echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
   apt-get update
   apt-get -y install git cmake automake autoconf tar intltool \
-          mono-complete mono-devel fsharp gnome-sharp2 gtk-sharp2 libssh2-1-dev nuget
+          mono-complete mono-devel fsharp gnome-sharp2 gtk-sharp2 libssh2-1-dev nuget zlib libssh2
 fi
 
 #buildTarBallFromTag monodevelop-5.6.3.3 5.6.3 5.6.3.3
