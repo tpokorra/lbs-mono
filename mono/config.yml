@@ -1,0 +1,3 @@
+lbs:
+  source:
+    download: ["https://launchpad.net/debian/+archive/primary/+sourcefiles/mono/5.18.0.240+dfsg-3/mono_5.18.0.240+dfsg.orig.tar.gz"]
