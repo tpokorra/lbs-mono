@@ -1,0 +1,3 @@
+lbs:
+  source:
+    download: ["https://launchpad.net/debian/+archive/primary/+sourcefiles/xsp/4.2-2.1/xsp_4.2.orig.tar.gz"]
