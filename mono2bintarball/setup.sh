@@ -5,7 +5,8 @@ MONO_PACKAGES=mono-xsp4 mono-fastcgi-server4 ca-certificates-mono
 apt-get -y install python3
 
 # get the installed packages on the target system (at Hostsharing)
-ssh $TARGETUSER@$TARGETHOST "dpkg-query -f '\${Package}\n' -W" > pkgs_target.txt || exit -1
+. ~/.ssh/LOGIN_TARGET_SYSTEM_ENV.sh
+ssh $TARGET_USER@$TARGET_HOST "dpkg-query -f '\${Package}\n' -W" > pkgs_target.txt || exit -1
 
 # we are using our own repo for newer Mono for Debian Buster
 echo "deb [arch=amd64] https://lbs.solidcharity.com/repos/tpokorra/mono/debian/buster buster main" > /etc/apt/sources.list.d/mono-tpokorra.list
