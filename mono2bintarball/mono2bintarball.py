@@ -45,6 +45,9 @@ os.system("cp -R /usr/lib/mono %s/usr/lib" % (outpath,))
 # copy config files as well
 os.system("mkdir -p %s/usr/etc/ && cp -R /etc/mono/ %s/usr/etc/" % (outpath,outpath,))
 
+# copy environment settings
+os.system("cp env.sh %s" % (outpath,))
+
 tarfile=("%s/%s/mono-%s.bin.tar.gz" % (Path.home(),"tarball",mono_version,))
 os.system("tar -C %s -czf %s %s" % (os.path.dirname(outpath),tarfile,os.path.basename(outpath)))
 os.popen("ln -s %s %s/mono" % (outpath,Path.home(),))

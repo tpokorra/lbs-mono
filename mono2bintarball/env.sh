@@ -1,0 +1,9 @@
+#!/bin/bash
+SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+echo $SCRIPT_PATH
+export MONO_PATH=$SCRIPT_PATH/usr/
+export MONO_GAC_PREFIX=$SCRIPT_PATH/usr/
+export PATH=$SCRIPT_PATH/usr/bin:$PATH
+
+sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/fastcgi-mono-server4
+sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/xsp4
