@@ -5,5 +5,8 @@ export MONO_PATH=$SCRIPT_PATH/usr/
 export MONO_GAC_PREFIX=$SCRIPT_PATH/usr/
 export PATH=$SCRIPT_PATH/usr/bin:$PATH
 
-sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/fastcgi-mono-server4
-sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/xsp4
+if [ -w "$MONO_PATH/bin/fastcgi-mono-server4" ]
+then
+  sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/fastcgi-mono-server4
+  sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/xsp4
+fi
