@@ -9,4 +9,5 @@ if [ -w "$MONO_PATH/bin/fastcgi-mono-server4" ]
 then
   sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/fastcgi-mono-server4
   sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/xsp4
+  sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/mcs
 fi
