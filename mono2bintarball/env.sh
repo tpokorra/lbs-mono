@@ -10,5 +10,8 @@ then
   sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/fastcgi-mono-server4
   sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/xsp4
   sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/mcs
+  sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/csharp
   sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/cert-sync
+  sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/certmgr
+  sed "s#/usr/#\$MONO_PATH/#g" -i $MONO_PATH/bin/mozroots
 fi
