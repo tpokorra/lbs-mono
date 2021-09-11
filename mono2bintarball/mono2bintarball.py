@@ -3,6 +3,7 @@
 import os
 import shutil
 from pathlib import Path
+import magic # for mime types
 
 # pkgs_cur.txt is the output of: dpkg-query -f '${Package}\n' -W
 # as it has been executed on the destination server
@@ -48,8 +49,16 @@ os.system("mkdir -p %s/usr/etc/ && cp -R /etc/mono/ %s/usr/etc/" % (outpath,outp
 # copy environment settings
 os.system("cp env.sh %s" % (outpath,))
 
-tarfile=("%s/%s/mono-%s.bin.tar.gz" % (Path.home(),"tarball",mono_version,))
+# replace /usr/ path with environment variable MONO_PATH
+mime = magic.Magic(mime=True)
+binpath = os.path.join(outpath, 'usr/bin')
+for file in os.listdir(binpath):
+  if mime.from_file(os.path.join(binpath, file)) == "text/x-shellscript":
+      os.system('sed "s#/usr/#\$MONO_PATH/#g" -i ' + os.path.join(binpath, file))
+
+linux_version = os.system('. /etc/os-release && echo "$ID$VERSION_ID"')
+tarfile=("%s/%s/mono-%s.bin.%s.tar.gz" % (Path.home(),"tarball",mono_version,linux_version,))
 os.system("tar -C %s -czf %s %s" % (os.path.dirname(outpath),tarfile,os.path.basename(outpath)))
 os.popen("ln -s %s %s/mono" % (outpath,Path.home(),))
 print("see result in " + tarfile)
-print("download at https://download.solidcharity.com/tarballs/tpokorra/mono/mono-%s.bin.tar.gz" % (mono_version,))
+print("download at https://download.solidcharity.com/tarballs/tpokorra/mono/%s" % (os.path.basename(tarfile),))
