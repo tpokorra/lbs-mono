@@ -4,6 +4,7 @@ import os
 import shutil
 from pathlib import Path
 import magic # for mime types
+import distro
 
 # pkgs_cur.txt is the output of: dpkg-query -f '${Package}\n' -W
 # as it has been executed on the destination server
@@ -56,7 +57,7 @@ for file in os.listdir(binpath):
   if mime.from_file(os.path.join(binpath, file)) == "text/x-shellscript":
       os.system('sed "s#/usr/#\$MONO_PATH/#g" -i ' + os.path.join(binpath, file))
 
-linux_version = os.system('. /etc/os-release && echo "$ID$VERSION_ID"')
+linux_version = ("%s%s" % (distro.id(), distro.version(),))
 tarfile=("%s/%s/mono-%s.bin.%s.tar.gz" % (Path.home(),"tarball",mono_version,linux_version,))
 os.system("tar -C %s -czf %s %s" % (os.path.dirname(outpath),tarfile,os.path.basename(outpath)))
 os.popen("ln -s %s %s/mono" % (outpath,Path.home(),))

@@ -2,7 +2,7 @@
 
 export MONO_PACKAGES="mono-xsp4 mono-fastcgi-server4 ca-certificates-mono"
 
-apt-get -y install python3
+apt-get -y install python3 python3-distro
 
 # get the installed packages on the target system (at Hostsharing)
 . ~/.ssh/LOGIN_TARGET_SYSTEM_ENV.sh
