@@ -8,8 +8,10 @@ source /etc/os-release
 
 # get the installed packages on the target system (at Hostsharing)
 if [[ "$VERSION_CODENAME" == "buster" ]]; then
+  sed -i "s/\r//g" ~/.ssh/LOGIN_TARGET_SYSTEM_ENV_BUSTER.sh
   . ~/.ssh/LOGIN_TARGET_SYSTEM_ENV_BUSTER.sh
 elif [[ "$VERSION_CODENAME" == "bookworm" ]]; then
+  sed -i "s/\r//g" ~/.ssh/LOGIN_TARGET_SYSTEM_ENV_BOOKWORM.sh
   . ~/.ssh/LOGIN_TARGET_SYSTEM_ENV_BOOKWORM.sh
 fi
 
