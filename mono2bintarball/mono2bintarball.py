@@ -24,6 +24,7 @@ if os.path.exists(outpath):
 # pkgs_mono.txt is from apt install, section: "The following NEW packages will be installed"
 # when installing: apt install mono-xsp4 mono-fastcgi-server4 ca-certificates-mono
 f = open("pkgs_mono.txt", "r")
+os.makedirs(f'{outpath}/usr/lib')
 for line in f:
   for pkgName in line.split():
     if pkgName in dstPackages:
